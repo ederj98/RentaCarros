@@ -85,7 +85,7 @@ public final class Alquiler {
 		BigDecimal costoRecargos = new BigDecimal(0);
 		if (esFinDeSemana(fechaEntrega)) {
 			costoRecargos = costoRecargos.add(
-					new BigDecimal((((horas * TARIFA_ESTANDAR_POR_HORA) * (PORCENTAJE_RECARGO_TARIFA_FINES_DE_SEMANA / 100))))); 
+					new BigDecimal((horas * TARIFA_ESTANDAR_POR_HORA) * (PORCENTAJE_RECARGO_TARIFA_FINES_DE_SEMANA / 100))); 
 		} else {
 			long horasNocturnas = 0;
 			if (diaRecogida &&
@@ -98,7 +98,7 @@ public final class Alquiler {
 			
 			if (horasNocturnas > 0) {
 				costoRecargos = costoRecargos.add(
-						new BigDecimal(((horasNocturnas * TARIFA_ESTANDAR_POR_HORA) * (PORCENTAJE_RECARGO_NOCTURNO / 100))));
+						new BigDecimal((horasNocturnas * TARIFA_ESTANDAR_POR_HORA) * (PORCENTAJE_RECARGO_NOCTURNO / 100)));
 			}
 		}
 		return costoRecargos;

@@ -33,6 +33,7 @@ public class ServicioCrearDetalleReserva {
 				});
 		
 		detalleReserva.setFechaEntrega(LocalDateTime.now());
+		ValidarFechas.validarFechaFueraHorarioServicio(detalleReserva.getFechaEntrega());
 		detalleReserva.setCosto(Alquiler.calcularCosto(reserva, detalleReserva.getFechaEntrega()));
 		return repositorioDetalleReserva.crear(detalleReserva);
 	}

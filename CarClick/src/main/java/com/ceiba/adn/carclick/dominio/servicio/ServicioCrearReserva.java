@@ -29,6 +29,7 @@ public class ServicioCrearReserva {
 					throw excepcion;
 				});
 		
+		ValidarFechas.validarFechaFueraHorarioServicio(reserva.getFechaRecogida());
 		return repositorioReserva.crear(reserva);
 	}
 }

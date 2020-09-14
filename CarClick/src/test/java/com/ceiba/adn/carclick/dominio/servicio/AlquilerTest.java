@@ -26,21 +26,6 @@ public class AlquilerTest {
 	}
 	
 	@Test
-	public void calcularCostoEntregaMismoDiaConRecargoNocturno() {
-		//Arrange
-		LocalDateTime fechaRecogida = LocalDateTime.of(2020, 9, 10, 14, 0);
-		Reserva reservaTestBuilder = new ReservaTestDataBuilder().conFechaRecogida(fechaRecogida)
-				.build();
-		LocalDateTime fechaEntrega = LocalDateTime.of(2020, 9, 10, 22, 0);
-		
-		//Act
-		BigDecimal costoReserva = Alquiler.calcularCosto(reservaTestBuilder, fechaEntrega);
-		
-		//Assert
-		assertEquals(costoReserva, new BigDecimal(121500));		
-	}
-	
-	@Test
 	public void calcularCostoEntregaMismoDiaFestivo() {
 		//Arrange
 		LocalDateTime fechaRecogida = LocalDateTime.of(2020, 9, 13, 9, 0);
@@ -65,6 +50,6 @@ public class AlquilerTest {
 		BigDecimal costoReserva = Alquiler.calcularCosto(reservaTestBuilder, fechaEntrega);
 		
 		//Assert
-		assertEquals(costoReserva, new BigDecimal(75000));		
+		assertEquals(costoReserva, new BigDecimal(1958250));		
 	}
 }
