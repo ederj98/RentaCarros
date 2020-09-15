@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CLIENTES")
+@Table(name = "CLIENTE")
 public class ClienteEntidad {
 		
 	@Id
@@ -53,5 +53,9 @@ public class ClienteEntidad {
 
 	public String getEmail() {
 		return email;
+	}
+	
+	public void setIdCliente(long idCliente) {
+		this.idCliente = idCliente;
 	}
 }

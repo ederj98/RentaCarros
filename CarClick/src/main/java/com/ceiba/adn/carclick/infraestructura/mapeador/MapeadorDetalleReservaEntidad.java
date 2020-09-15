@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import com.ceiba.adn.carclick.dominio.modelo.DetalleReserva;
 import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.DetalleReservaEntidad;
+import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.ReservaEntidad;
 
 public class MapeadorDetalleReservaEntidad {
 
@@ -18,7 +19,7 @@ public class MapeadorDetalleReservaEntidad {
 		if (Objects.isNull(detalleReservaEntidad)) {
 			return null;
 		}
-		return new DetalleReserva(detalleReservaEntidad.getId(), detalleReservaEntidad.getIdReserva(), 
+		return new DetalleReserva(detalleReservaEntidad.getId(), detalleReservaEntidad.getReserva().getId(), 
 				detalleReservaEntidad.getFechaEntrega(), detalleReservaEntidad.getCosto());
 	}
 	
@@ -31,7 +32,10 @@ public class MapeadorDetalleReservaEntidad {
 		if (Objects.isNull(detalleReserva)) {
 			return null;
 		}
-		return new DetalleReservaEntidad(detalleReserva.getId(), detalleReserva.getIdReserva(), 
+		ReservaEntidad reservaEntidad = new ReservaEntidad();
+		reservaEntidad.setId(detalleReserva.getIdReserva());
+		
+		return new DetalleReservaEntidad(detalleReserva.getId(), reservaEntidad, 
 				detalleReserva.getFechaEntrega(), detalleReserva.getCosto());
 	}
 }

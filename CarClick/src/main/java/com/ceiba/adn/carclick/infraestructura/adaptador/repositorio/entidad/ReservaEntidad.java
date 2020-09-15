@@ -6,10 +6,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "RESERVAS")
+@Table(name = "RESERVA")
 public class ReservaEntidad {
 		
 	@Id
@@ -17,18 +20,22 @@ public class ReservaEntidad {
 	@Column(name = "ID")
 	private long id;
 	
-	@Column(name = "ID_CLIENTE")
-	private long idCliente;
+	@ManyToOne
+	@JoinColumn(name = "ID_CLIENTE")
+	private ClienteEntidad idCliente;
 	
 	@Column(name = "ID_CARRO")
 	private long idCarro;
 	
 	@Column(name = "FECHA_RECOGIDA")
 	private LocalDateTime fechaRecogida;
+	
+	@OneToOne(mappedBy = "reserva")
+	private DetalleReservaEntidad detalleReserva;
 
 	public ReservaEntidad() {}
 	
-	public ReservaEntidad(long id, long idCliente, long idCarro, LocalDateTime fechaRecogida) {
+	public ReservaEntidad(long id, ClienteEntidad idCliente, long idCarro, LocalDateTime fechaRecogida) {
 		this.id = id;
 		this.idCliente = idCliente;
 		this.idCarro = idCarro;
@@ -39,7 +46,7 @@ public class ReservaEntidad {
 		return id;
 	}
 
-	public long getIdCliente() {
+	public ClienteEntidad getIdCliente() {
 		return idCliente;
 	}
 
@@ -49,5 +56,9 @@ public class ReservaEntidad {
 
 	public LocalDateTime getFechaRecogida() {
 		return fechaRecogida;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
 	}
 }

@@ -40,7 +40,7 @@ pipeline {
       steps{
         echo "------------>Unit Tests<------------"
         dir("CarClick"){
-          sh 'gradle --b ./build.gradle clean test'
+          sh 'gradle --b ./build.gradle clean test jacocoTestReport'
         }
       }
     }

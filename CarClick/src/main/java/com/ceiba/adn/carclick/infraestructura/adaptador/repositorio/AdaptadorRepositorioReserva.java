@@ -16,7 +16,7 @@ public class AdaptadorRepositorioReserva implements RepositorioReserva {
 	private RepositorioReservaJPA reservaJPA;
 	
 	public AdaptadorRepositorioReserva(RepositorioReservaJPA reservaJPA) {
-		
+		this.reservaJPA = reservaJPA;
 	}
 
 	@Override

@@ -3,14 +3,18 @@ package com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name = "DETALLES_RESERVAS")
+@Table(name = "DETALLE_RESERVA")
 public class DetalleReservaEntidad {
 	
 	@Id
@@ -18,8 +22,9 @@ public class DetalleReservaEntidad {
 	@Column(name = "ID")
 	private long id;
 	
-	@Column(name = "ID_RESERVA")
-	private long idReserva;
+	@OneToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "ID_RESERVA", referencedColumnName = "id")
+	private ReservaEntidad reserva;
 	
 	@Column(name = "FECHA_ENTREGA")
 	private LocalDateTime fechaEntrega;
@@ -29,9 +34,9 @@ public class DetalleReservaEntidad {
 	
 	public DetalleReservaEntidad() {}
 	
-	public DetalleReservaEntidad(long id, long idReserva, LocalDateTime fechaEntrega, BigDecimal costo) {
+	public DetalleReservaEntidad(long id, ReservaEntidad reserva, LocalDateTime fechaEntrega, BigDecimal costo) {
 		this.id = id;
-		this.idReserva = idReserva;
+		this.reserva = reserva;
 		this.fechaEntrega = fechaEntrega;
 		this.costo = costo;
 	}
@@ -40,8 +45,8 @@ public class DetalleReservaEntidad {
 		return id;
 	}
 
-	public long getIdReserva() {
-		return idReserva;
+	public ReservaEntidad getReserva() {
+		return reserva;
 	}
 
 	public LocalDateTime getFechaEntrega() {

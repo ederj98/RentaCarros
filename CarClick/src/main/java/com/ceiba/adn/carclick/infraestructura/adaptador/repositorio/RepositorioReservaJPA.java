@@ -9,4 +9,6 @@ import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.Rese
  * @author eder.fernandez
  *
  */
-public interface RepositorioReservaJPA extends JpaRepository<ReservaEntidad, Long> {}
+public interface RepositorioReservaJPA extends JpaRepository<ReservaEntidad, Long> {
+	
+}
