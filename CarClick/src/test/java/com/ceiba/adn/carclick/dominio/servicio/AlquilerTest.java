@@ -1,7 +1,6 @@
 package com.ceiba.adn.carclick.dominio.servicio;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -12,7 +11,7 @@ import com.ceiba.adn.carclick.dominio.modelo.Reserva;
 import com.ceiba.adn.carclick.testdatabuilder.ReservaTestDataBuilder;
 
 public class AlquilerTest {
-/*
+
 	@Test
 	public void calcularCostoEntregaMismoDia() {
 		//Arrange
@@ -65,13 +64,5 @@ public class AlquilerTest {
 		
 		//Assert
 		assertEquals(costoReserva, BigDecimal.valueOf(1971750.0));	
-	}
-	*/
-	
-	@Test
-	public void calcularCostoVariosDias() {
-		
-		//Assert
-		assertTrue(true);	
 	}
 }
