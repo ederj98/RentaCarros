@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionClienteNoRegistrado;
+import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionFechaFueraHorarioServicio;
 import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionReservaNoRegistrada;
 
@@ -27,6 +28,12 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler{
 	@org.springframework.web.bind.annotation.ExceptionHandler(ExcepcionClienteNoRegistrado.class)
 	public void excepcionClienteNoRegistrado(HttpServletResponse response) throws IOException {
 		LOG.warn("-- ServicioCrearReserva.crearReserva - El cliente ingresado no se encuentra registrado --");
+		response.sendError(HttpStatus.BAD_REQUEST.value());
+	}
+	
+	@org.springframework.web.bind.annotation.ExceptionHandler(ExcepcionDuplicidad.class)
+	public void excepcionClienteYaRegistrado(HttpServletResponse response) throws IOException {
+		LOG.warn("-- ServicioCrearCliente.crearCliente - El id ingresado ya se encuentra registrado --");
 		response.sendError(HttpStatus.BAD_REQUEST.value());
 	}
 	

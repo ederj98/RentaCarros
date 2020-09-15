@@ -20,13 +20,5 @@ public interface RepositorioClienteJPA extends JpaRepository<ClienteEntidad, Lon
 	 * @param idCliente
 	 * @return
 	 */
-	public Optional<Cliente> buscarPorId(@Param("idCliente") long idCliente);
-	
-	/**
-	 * Metodo que permite validar si un Cliente se encuentra registrado con el id
-	 * suministrado
-	 * @param idCliente
-	 * @return
-	 */
-	public boolean existe(@Param("idCliente") long idCliente);
+	public Optional<Cliente> findByIdCliente(@Param("id") long idCliente);
 }
