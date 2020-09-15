@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionClienteNoRegistrado;
+import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionReservaNoRegistrada;
 import com.ceiba.adn.carclick.dominio.modelo.DetalleReserva;
 import com.ceiba.adn.carclick.dominio.modelo.Reserva;
 import com.ceiba.adn.carclick.dominio.puerto.repositorio.RepositorioDetalleReserva;
@@ -26,7 +26,7 @@ public class ServicioCrearDetalleReserva {
 	public DetalleReserva ejecutar(DetalleReserva detalleReserva) {
 		Reserva reserva = repositorioReserva.buscarReserva(detalleReserva.getIdReserva())
 				.orElseThrow(() -> { 
-					ExcepcionClienteNoRegistrado excepcion = new ExcepcionClienteNoRegistrado(
+					ExcepcionReservaNoRegistrada excepcion = new ExcepcionReservaNoRegistrada(
 						LA_RESERVA_INGRESADA_NO_EXISTE);
 					LOG.warn(excepcion);
 					throw excepcion;

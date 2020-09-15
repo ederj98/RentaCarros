@@ -13,7 +13,7 @@ import com.ceiba.adn.carclick.testdatabuilder.ReservaTestDataBuilder;
 public class AlquilerTest {
 
 	@Test
-	public void calcularCostoEntregaMismoDiaSinRecargo() {
+	public void calcularCostoEntregaMismoDia() {
 		//Arrange
 		Reserva reservaTestBuilder = new ReservaTestDataBuilder().build();
 		LocalDateTime fechaEntrega = LocalDateTime.of(2020, 9, 10, 14, 0);
@@ -35,9 +35,22 @@ public class AlquilerTest {
 		
 		//Act
 		BigDecimal costoReserva = Alquiler.calcularCosto(reservaTestBuilder, fechaEntrega);
+
+		//Assert
+		assertEquals(costoReserva, BigDecimal.valueOf(82500.0));		
+	}
+	
+	@Test
+	public void calcularCostoEntregaSegundoDia() {
+		//Arrange
+		Reserva reservaTestBuilder = new ReservaTestDataBuilder().build();
+		LocalDateTime fechaEntrega = LocalDateTime.of(2020, 9, 11, 14, 0);
+		
+		//Act
+		BigDecimal costoReserva = Alquiler.calcularCosto(reservaTestBuilder, fechaEntrega);
 		
 		//Assert
-		assertEquals(costoReserva, new BigDecimal(82500));		
+		assertEquals(costoReserva, BigDecimal.valueOf(443250.0));	
 	}
 	
 	@Test
@@ -50,6 +63,6 @@ public class AlquilerTest {
 		BigDecimal costoReserva = Alquiler.calcularCosto(reservaTestBuilder, fechaEntrega);
 		
 		//Assert
-		assertEquals(costoReserva, new BigDecimal(1958250));		
+		assertEquals(costoReserva, BigDecimal.valueOf(1971750.0));	
 	}
 }
