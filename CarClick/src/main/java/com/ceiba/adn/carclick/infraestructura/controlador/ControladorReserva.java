@@ -22,10 +22,10 @@ import io.swagger.annotations.ApiResponse;
 @Api(tags = "reserva")
 public class ControladorReserva {
 	
-	private final ManejadorCrearReserva servicioReserva;
+	private final ManejadorCrearReserva manejadorCrearReserva;
 	
 	public ControladorReserva(ManejadorCrearReserva servicioReserva) {
-		this.servicioReserva = servicioReserva;
+		this.manejadorCrearReserva = servicioReserva;
 	}
 	
 	@PostMapping
@@ -33,6 +33,6 @@ public class ControladorReserva {
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Reserva Creada Exitosamente"),
 			@ApiResponse(code = 400, message = "Solicitud invalida") })
 	public ResponseEntity<Reserva> crearReserva(@RequestBody ReservaDTO reservaDTO) {
-		return new ResponseEntity<>(this.servicioReserva.ejecutar(reservaDTO), HttpStatus.CREATED);
+		return new ResponseEntity<>(this.manejadorCrearReserva.ejecutar(reservaDTO), HttpStatus.CREATED);
 	}
 }

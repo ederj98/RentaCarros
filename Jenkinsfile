@@ -36,6 +36,15 @@ pipeline {
       }
     }
     
+    stage('Build') {
+      steps {
+        echo "------------>Build<------------"
+        dir("CarClick"){
+          sh 'gradle --b ./build.gradle build -x test'
+        }
+      }
+    }
+
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"
@@ -44,27 +53,16 @@ pipeline {
           sh 'gradle --b ./build.gradle test jacocoTestReport'
         }
       }
-    }
+    }  
 
     stage('Static Code Analysis') {
       steps{
         echo '------------>Análisis de código estático<------------'
         withSonarQubeEnv('Sonar') {
-          dir("CarClick"){
             sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
-          }
         }
       }
     }
-
-    stage('Build') {
-      steps {
-        echo "------------>Build<------------"
-        dir("CarClick"){
-          sh 'gradle --b ./build.gradle build -x test'
-        }
-      }
-    }  
   }
 
   post {
