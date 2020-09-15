@@ -17,7 +17,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ApiResponse;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/api/reserva")
 @Api(tags = "reserva")
