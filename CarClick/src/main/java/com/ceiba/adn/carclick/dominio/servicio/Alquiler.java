@@ -17,7 +17,7 @@ public final class Alquiler {
 	private static final double PORCENTAJE_RECARGO_TARIFA_FINES_DE_SEMANA = 0.1;
 	private static final int NUM_HORAS_DIA = 24;
 	private static final int NUM_HORAS_MAX_RECARGO_NOCTURNO = 11;
-	private static final long NUM_DIAS_RECOGIDA_ENTREGA = 2;
+	private static final int NUM_DIAS_RECOGIDA_ENTREGA = 2;
 	private static final int CERO = 0;
 
 	private Alquiler() {
@@ -72,6 +72,7 @@ public final class Alquiler {
 			} else if(!diaRecogida &&
 					!esEntregaMismoDia(reserva.getFechaRecogida().toLocalDate(), fechaEntrega.toLocalDate())) {
 				horasNocturnas = Duration.between(LocalTime.of(00, 00), LocalTime.of(07, 00)).toHours();
+				
 			}
 			
 			if (horasNocturnas > 0) {
@@ -79,6 +80,7 @@ public final class Alquiler {
 						BigDecimal.valueOf((horasNocturnas * TARIFA_ESTANDAR_POR_HORA) * PORCENTAJE_RECARGO_NOCTURNO));
 			}
 		}
+		
 		return costoRecargos;
 	}
 	
@@ -109,14 +111,21 @@ public final class Alquiler {
 			contDias++;
 		}
 		
+		if (!esEntregaMismoDia(reserva.getFechaRecogida().toLocalDate(), fechaEntrega.toLocalDate()) &&
+				diasReserva == 0) {
+			costoRecargos = costoRecargos.add(calcularRecargoPorDiaRecogidaEntrega(reserva, fechaEntrega, totalHoras, false));		
+		}
+		
 		if (contadorFinSemana > CERO) {
-			costoRecargos = costoRecargos.add(BigDecimal.valueOf((((contadorFinSemana * NUM_HORAS_DIA) * TARIFA_ESTANDAR_POR_HORA) * 
+			int costoHoras = (contadorFinSemana * NUM_HORAS_DIA) * TARIFA_ESTANDAR_POR_HORA;
+			costoRecargos = costoRecargos.add(BigDecimal.valueOf((costoHoras * 
 					PORCENTAJE_RECARGO_TARIFA_FINES_DE_SEMANA)));
 		}
-		long numDiasRecargoNocturno = diasReserva - NUM_DIAS_RECOGIDA_ENTREGA - contadorFinSemana;
+		long numDiasRecargoNocturno = (diasReserva+1) - NUM_DIAS_RECOGIDA_ENTREGA - contadorFinSemana;
 		if (numDiasRecargoNocturno > CERO) {
-			costoRecargos = costoRecargos.add(BigDecimal.valueOf((((numDiasRecargoNocturno * NUM_HORAS_MAX_RECARGO_NOCTURNO) * TARIFA_ESTANDAR_POR_HORA) * 
-					PORCENTAJE_RECARGO_TARIFA_FINES_DE_SEMANA)));
+			long costoHoras = (numDiasRecargoNocturno * NUM_HORAS_MAX_RECARGO_NOCTURNO) * TARIFA_ESTANDAR_POR_HORA;
+			costoRecargos = costoRecargos.add(BigDecimal.valueOf((costoHoras * 
+					PORCENTAJE_RECARGO_NOCTURNO)));
 		}
 		
 		return costoRecargos;
