@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Table(name = "CARRO")
 public class CarroEntidad {
 		
-	public CarroEntidad() {}
+	
 	
 	@Id
 	@GeneratedValue
@@ -31,15 +31,6 @@ public class CarroEntidad {
 	
 	@Column(name = "TIPO_COMBUSTIBLE")
 	private String tipoCombustible;
-	
-	public CarroEntidad(long id, String modelo, String tipoCambios, int numPasajeros, int numPuertas, String tipoCombustible) {
-		this.id = id;
-		this.modelo = modelo;
-		this.tipoCambios = tipoCambios;
-		this.numPasajeros = numPasajeros;
-		this.numPuertas = numPuertas;
-		this.tipoCombustible = tipoCombustible;
-	}
 
 	public long getId() {
 		return id;
@@ -63,5 +54,20 @@ public class CarroEntidad {
 
 	public String getTipoCombustible() {
 		return tipoCombustible;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public CarroEntidad() {}
+	
+	public CarroEntidad(long id, String modelo, String tipoCambios, int numPasajeros, int numPuertas, String tipoCombustible) {
+		this.id = id;
+		this.modelo = modelo;
+		this.tipoCambios = tipoCambios;
+		this.numPasajeros = numPasajeros;
+		this.numPuertas = numPuertas;
+		this.tipoCombustible = tipoCombustible;
 	}
 }

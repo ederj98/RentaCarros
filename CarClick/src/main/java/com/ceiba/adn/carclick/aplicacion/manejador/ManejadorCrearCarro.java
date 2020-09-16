@@ -16,7 +16,7 @@ public class ManejadorCrearCarro {
 	}
 	
 	/**
-	 * Metodo encargado de la operacion de crear un Cliente
+	 * Metodo encargado de la operacion de crear un Carro
 	 * @param clienteDTO
 	 * @return
 	 */

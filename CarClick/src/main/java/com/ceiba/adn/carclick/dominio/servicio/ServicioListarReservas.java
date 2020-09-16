@@ -13,7 +13,7 @@ public class ServicioListarReservas {
 		this.repositorioReserva = repositorioReserva;
 	}
 	
-	public List<Reserva> listar(long idCliente) {
-		return repositorioReserva.listar(idCliente);
+	public List<Reserva> listar() {
+		return repositorioReserva.listar();
 	}
 }

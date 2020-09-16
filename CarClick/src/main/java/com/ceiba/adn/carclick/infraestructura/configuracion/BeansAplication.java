@@ -53,8 +53,9 @@ public class BeansAplication {
 	}
 	
 	@Bean
-	public ServicioCrearReserva servicioCrearReserva(final RepositorioReserva repositorioReserva, final RepositorioCliente repositorioCliente) {
-		return new ServicioCrearReserva(repositorioReserva, repositorioCliente);
+	public ServicioCrearReserva servicioCrearReserva(final RepositorioReserva repositorioReserva, final RepositorioCliente repositorioCliente,
+			RepositorioCarro repositorioCarro) {
+		return new ServicioCrearReserva(repositorioReserva, repositorioCliente, repositorioCarro);
 	}
 	
 	@Bean
@@ -73,8 +74,9 @@ public class BeansAplication {
 	}
 	
 	@Bean
-	public ServicioActualizarReserva servicioActualizarReserva(final RepositorioReserva repositorioReserva) {
-		return new ServicioActualizarReserva(repositorioReserva);
+	public ServicioActualizarReserva servicioActualizarReserva(final RepositorioReserva repositorioReserva, final RepositorioCarro repositorioCarro,
+			final RepositorioCliente repositorioCliente) {
+		return new ServicioActualizarReserva(repositorioReserva, repositorioCarro, repositorioCliente);	
 	}
 	
 	@Bean

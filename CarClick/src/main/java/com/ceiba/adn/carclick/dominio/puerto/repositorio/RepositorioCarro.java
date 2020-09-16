@@ -15,6 +15,13 @@ public interface RepositorioCarro {
 	public Carro crear(Carro carro);
 	
 	/**
+	 * Metodo que permite determinar si previamente se registro el Carro
+	 * @param carro
+	 * @return
+	 */
+	public boolean existe(long idCarro);
+	
+	/**
 	 * Metodo que permite listar los Carros registrados
 	 * @return
 	 */

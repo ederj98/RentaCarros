@@ -31,9 +31,9 @@ public interface RepositorioReserva {
 	
 	
 	/**
-	 * Permite listar las reservas por cliente
-	 * @param idCliente
+	 * Permite listar las reservas
+	 * 
 	 * @return
 	 */
-	public List<Reserva> listar(long idCliente);
+	public List<Reserva> listar();
 }

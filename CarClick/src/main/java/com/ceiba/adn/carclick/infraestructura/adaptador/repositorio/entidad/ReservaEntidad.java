@@ -24,8 +24,9 @@ public class ReservaEntidad {
 	@JoinColumn(name = "ID_CLIENTE")
 	private ClienteEntidad idCliente;
 	
-	@Column(name = "ID_CARRO")
-	private long idCarro;
+	@ManyToOne
+	@JoinColumn(name = "ID_CARRO")
+	private CarroEntidad idCarro;
 	
 	@Column(name = "FECHA_RECOGIDA")
 	private LocalDateTime fechaRecogida;
@@ -35,7 +36,7 @@ public class ReservaEntidad {
 
 	public ReservaEntidad() {}
 	
-	public ReservaEntidad(long id, ClienteEntidad idCliente, long idCarro, LocalDateTime fechaRecogida) {
+	public ReservaEntidad(long id, ClienteEntidad idCliente, CarroEntidad idCarro, LocalDateTime fechaRecogida) {
 		this.id = id;
 		this.idCliente = idCliente;
 		this.idCarro = idCarro;
@@ -50,7 +51,7 @@ public class ReservaEntidad {
 		return idCliente;
 	}
 
-	public long getIdCarro() {
+	public CarroEntidad getIdCarro() {
 		return idCarro;
 	}
 
@@ -62,7 +63,7 @@ public class ReservaEntidad {
 		this.id = id;
 	}
 
-	public void setIdCarro(long idCarro) {
+	public void setIdCarro(CarroEntidad idCarro) {
 		this.idCarro = idCarro;
 	}
 

@@ -14,15 +14,15 @@ public class ServicioCrearCliente {
 	}
 	
 	public Cliente ejecutar(Cliente cliente) {
-		validarRegistroPrevio(cliente);
+		validarRegistroPrevio(cliente.getIdCliente());
 		ValidarCampos.esVacio(cliente.getIdCliente());
 		ValidarCampos.esVacio(cliente.getNombreCompleto());
 		ValidarCampos.esVacio(cliente.getEmail());
 		return this.repositorioCliente.crear(cliente);
 	}
 
-	private void validarRegistroPrevio(Cliente cliente) {
-		boolean existe = this.repositorioCliente.existe(cliente);
+	private void validarRegistroPrevio(long idCliente) {
+		boolean existe = this.repositorioCliente.existe(idCliente);
 		if(existe) {
 			throw new ExcepcionDuplicidad(EL_CLIENTE_YA_SE_ENCUENTRA_REGISTRADO);
 		}

@@ -30,4 +30,9 @@ public class RepositorioCarroMySql implements RepositorioCarro {
 		List<CarroEntidad> entidades = carroJPA.findAll();
 		return entidades.stream().map(MapeadorCarroEntidad::mapearAModelo).collect(Collectors.toList());
 	}
+
+	@Override
+	public boolean existe(long idCarro) {
+		return carroJPA.existsById(idCarro);
+	}
 }

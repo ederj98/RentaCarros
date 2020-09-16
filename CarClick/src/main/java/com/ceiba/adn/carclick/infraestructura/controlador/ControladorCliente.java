@@ -1,7 +1,5 @@
 package com.ceiba.adn.carclick.infraestructura.controlador;
 
-import java.util.Optional;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,12 +42,6 @@ public class ControladorCliente {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Cliente> consultarCliente(@PathVariable("id") long idCliente) {
-	    Optional<Cliente> cliente = this.manejadorListarCliente.ejecutar(idCliente);
-	    
-	    if (cliente.isPresent()) {
-	      return new ResponseEntity<>(cliente.get(), HttpStatus.OK);
-	    } else {
-	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	    }
+	    return new ResponseEntity<>(this.manejadorListarCliente.ejecutar(idCliente), HttpStatus.OK);	    
 	 }
 }

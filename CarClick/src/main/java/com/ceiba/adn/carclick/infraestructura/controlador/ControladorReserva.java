@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,16 +47,17 @@ public class ControladorReserva {
 		return new ResponseEntity<>(this.manejadorCrearReserva.ejecutar(reservaDTO), HttpStatus.CREATED);
 	}
 	
-	@GetMapping(value="/{id}", produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Reserva>> consultarClientes(@PathVariable("idCliente") long idCliente) {
-		return new ResponseEntity<>(this.manejadorListarReserva.ejecutar(idCliente), HttpStatus.OK);
+	@GetMapping(produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Reserva>> consultarClientes() {
+		return new ResponseEntity<>(this.manejadorListarReserva.ejecutar(), HttpStatus.OK);
 	}
 	
 	@PutMapping
 	@ApiOperation(value = "Actualizar Reserva", notes = "Servicio para Actualizar una Reserva")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Reserva Actualizada Exitosamente"),
 			@ApiResponse(code = 400, message = "Solicitud invalida") })
-	public void actualizarReserva(@RequestBody ReservaDTO reservaDTO) {
+	public ResponseEntity<HttpStatus> actualizarReserva(@RequestBody ReservaDTO reservaDTO) {
 		this.manejadorActualizarReserva.ejecutar(reservaDTO);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 }

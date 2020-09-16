@@ -25,8 +25,8 @@ public class RepositorioClienteMySql implements RepositorioCliente {
 	}
 
 	@Override
-	public boolean existe(Cliente cliente) {
-		return clienteJPA.existsById(cliente.getIdCliente());
+	public boolean existe(long idCliente) {
+		return clienteJPA.existsById(idCliente);
 	}
 
 	@Override

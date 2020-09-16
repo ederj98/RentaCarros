@@ -11,18 +11,6 @@ public class CarroDTO {
 	private int numPasajeros;
 	private int numPuertas;
 	private String tipoCombustible;
-	
-	@JsonCreator
-	public CarroDTO(@JsonProperty("id") long id, @JsonProperty("modelo") String modelo, 
-			@JsonProperty("tipoCambios") String tipoCambios, @JsonProperty("numPasajeros") int numPasajeros, 
-			@JsonProperty("numPuertas") int numPuertas, @JsonProperty("tipoCombustible") String tipoCombustible) {
-		this.id = id;
-		this.modelo = modelo;
-		this.tipoCambios = tipoCambios;
-		this.numPasajeros = numPasajeros;
-		this.numPuertas = numPuertas;
-		this.tipoCombustible = tipoCombustible;
-	}
 
 	public long getId() {
 		return id;
@@ -46,5 +34,17 @@ public class CarroDTO {
 
 	public String getTipoCombustible() {
 		return tipoCombustible;
+	}
+	
+	@JsonCreator
+	public CarroDTO(@JsonProperty("id") long id, @JsonProperty("modelo") String modelo, 
+			@JsonProperty("tipoCambios") String tipoCambios, @JsonProperty("numPasajeros") int numPasajeros, 
+			@JsonProperty("numPuertas") int numPuertas, @JsonProperty("tipoCombustible") String tipoCombustible) {
+		this.id = id;
+		this.modelo = modelo;
+		this.tipoCambios = tipoCambios;
+		this.numPasajeros = numPasajeros;
+		this.numPuertas = numPuertas;
+		this.tipoCombustible = tipoCombustible;
 	}
 }

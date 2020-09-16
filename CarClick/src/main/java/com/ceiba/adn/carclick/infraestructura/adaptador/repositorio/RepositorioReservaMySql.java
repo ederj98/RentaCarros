@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.ceiba.adn.carclick.dominio.modelo.Reserva;
 import com.ceiba.adn.carclick.dominio.puerto.repositorio.RepositorioReserva;
+import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.CarroEntidad;
 import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.ReservaEntidad;
 import com.ceiba.adn.carclick.infraestructura.mapeador.MapeadorReservaEntidad;
 
@@ -15,9 +16,11 @@ import com.ceiba.adn.carclick.infraestructura.mapeador.MapeadorReservaEntidad;
 public class RepositorioReservaMySql implements RepositorioReserva {
 
 	private RepositorioReservaJPA reservaJPA;
+	private RepositorioCarroJPA carroJPA;
 	
-	public RepositorioReservaMySql(RepositorioReservaJPA reservaJPA) {
+	public RepositorioReservaMySql(RepositorioReservaJPA reservaJPA, RepositorioCarroJPA carroJPA) {
 		this.reservaJPA = reservaJPA;
+		this.carroJPA = carroJPA;
 	}
 
 	@Override
@@ -32,8 +35,8 @@ public class RepositorioReservaMySql implements RepositorioReserva {
 	}
 
 	@Override
-	public List<Reserva> listar(long idCliente) {
-		List<ReservaEntidad> entidades = reservaJPA.findAllByIdCliente(idCliente);
+	public List<Reserva> listar() {
+		List<ReservaEntidad> entidades = reservaJPA.findAll();
 		return entidades.stream().map(MapeadorReservaEntidad::mapearAModelo).collect(Collectors.toList());
 	}
 
@@ -41,8 +44,14 @@ public class RepositorioReservaMySql implements RepositorioReserva {
 	public void actualizar(Reserva reserva) {
 		ReservaEntidad entidad = MapeadorReservaEntidad.mapearAEntidad(reserva);
 		Optional<ReservaEntidad> tempReserva = reservaJPA.findById(reserva.getId());
-		tempReserva.get().setFechaRecogida(reserva.getFechaRecogida());
-		tempReserva.get().setIdCarro(reserva.getIdCarro());
+		Optional<CarroEntidad> tempCarro = carroJPA.findById(reserva.getIdCarro());
+	
+		if (tempReserva.isPresent()) {
+			tempReserva.get().setFechaRecogida(reserva.getFechaRecogida());
+			if (tempCarro.isPresent()) {
+				tempReserva.get().setIdCarro(tempCarro.get());
+			}
+		}
 		
 		MapeadorReservaEntidad.mapearAModelo(reservaJPA.save(entidad));
 	}

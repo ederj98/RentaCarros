@@ -13,7 +13,7 @@ public class ManejadorListarReserva {
 		this.servicioListarReservas = servicioListarReserva;
 	}
 	
-	public List<Reserva> ejecutar(long idCliente) {
-		return servicioListarReservas.listar(idCliente);
+	public List<Reserva> ejecutar() {
+		return servicioListarReservas.listar();
 	}
 }

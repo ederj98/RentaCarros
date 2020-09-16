@@ -12,13 +12,13 @@ public interface RepositorioCliente {
 	 * @return
 	 */
 	public Cliente crear(Cliente cliente);
-	
+		
 	/**
 	 * Metodo que permite determinar si previamente se registro el Cliente
-	 * @param cliente
+	 * @param idCliente
 	 * @return
 	 */
-	public boolean existe(Cliente cliente);
+	public boolean existe(long idCliente);
 	
 	/**
 	 * Metodo encargado de la busqueda de una Cliente dado el ID proporcionado
