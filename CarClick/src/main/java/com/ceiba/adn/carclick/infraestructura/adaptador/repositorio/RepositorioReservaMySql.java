@@ -1,7 +1,8 @@
 package com.ceiba.adn.carclick.infraestructura.adaptador.repositorio;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
@@ -11,11 +12,11 @@ import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.Rese
 import com.ceiba.adn.carclick.infraestructura.mapeador.MapeadorReservaEntidad;
 
 @Component
-public class AdaptadorRepositorioReserva implements RepositorioReserva {
+public class RepositorioReservaMySql implements RepositorioReserva {
 
 	private RepositorioReservaJPA reservaJPA;
 	
-	public AdaptadorRepositorioReserva(RepositorioReservaJPA reservaJPA) {
+	public RepositorioReservaMySql(RepositorioReservaJPA reservaJPA) {
 		this.reservaJPA = reservaJPA;
 	}
 
@@ -31,7 +32,18 @@ public class AdaptadorRepositorioReserva implements RepositorioReserva {
 	}
 
 	@Override
-	public Collection<Reserva> listar(long idReserva) {	
-		return null;
+	public List<Reserva> listar(long idCliente) {
+		List<ReservaEntidad> entidades = reservaJPA.findAllByIdCliente(idCliente);
+		return entidades.stream().map(MapeadorReservaEntidad::mapearAModelo).collect(Collectors.toList());
+	}
+
+	@Override
+	public void actualizar(Reserva reserva) {
+		ReservaEntidad entidad = MapeadorReservaEntidad.mapearAEntidad(reserva);
+		Optional<ReservaEntidad> tempReserva = reservaJPA.findById(reserva.getId());
+		tempReserva.get().setFechaRecogida(reserva.getFechaRecogida());
+		tempReserva.get().setIdCarro(reserva.getIdCarro());
+		
+		MapeadorReservaEntidad.mapearAModelo(reservaJPA.save(entidad));
 	}
 }

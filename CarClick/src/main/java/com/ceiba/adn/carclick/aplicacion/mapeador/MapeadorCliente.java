@@ -5,7 +5,7 @@ import java.util.Objects;
 import com.ceiba.adn.carclick.aplicacion.dto.ClienteDTO;
 import com.ceiba.adn.carclick.dominio.modelo.Cliente;
 
-public class MapeadorCliente {
+public final class MapeadorCliente {
 
 	private MapeadorCliente() {}
 	

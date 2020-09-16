@@ -5,8 +5,10 @@ import java.util.Objects;
 import com.ceiba.adn.carclick.aplicacion.dto.ReservaDTO;
 import com.ceiba.adn.carclick.dominio.modelo.Reserva;
 
-public class MapeadorReserva {
+public final class MapeadorReserva {
 
+	private MapeadorReserva() {}
+	
 	/**
 	 * Metodo encargado de convertir una Reserva en una ReservaDTO
 	 * @param reserva

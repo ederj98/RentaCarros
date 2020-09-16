@@ -1,4 +1,4 @@
-package com.ceiba.adn.carclick.infraestructura.controlador.excepcion;
+package com.ceiba.adn.carclick.infraestructura.excepcion;
 
 import java.io.IOException;
 

@@ -1,8 +1,5 @@
 package com.ceiba.adn.carclick.dominio.servicio;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionClienteNoRegistrado;
 import com.ceiba.adn.carclick.dominio.modelo.Reserva;
 import com.ceiba.adn.carclick.dominio.puerto.repositorio.RepositorioCliente;
@@ -10,7 +7,6 @@ import com.ceiba.adn.carclick.dominio.puerto.repositorio.RepositorioReserva;
 
 public class ServicioCrearReserva {
 
-	private static final Logger LOG = LogManager.getLogger(ServicioCrearReserva.class);
 	private RepositorioReserva repositorioReserva;
 	private RepositorioCliente repositorioCliente;
 	private static final String EL_CLIENTE_NO_SE_ENCUENTRA_REGISTRADO = "El cliente no se encuentra registrado";
@@ -23,13 +19,13 @@ public class ServicioCrearReserva {
 	public Reserva ejecutar(Reserva reserva) {
 		repositorioCliente.buscarCliente(reserva.getIdCliente())
 				.orElseThrow(() -> { 
-					ExcepcionClienteNoRegistrado excepcion = new ExcepcionClienteNoRegistrado(
-						EL_CLIENTE_NO_SE_ENCUENTRA_REGISTRADO);
-					LOG.warn(excepcion);
-					throw excepcion;
+					throw new ExcepcionClienteNoRegistrado(EL_CLIENTE_NO_SE_ENCUENTRA_REGISTRADO);
 				});
 		
+		ValidarCampos.esVacio(reserva.getFechaRecogida());
 		ValidarFechas.validarFechaFueraHorarioServicio(reserva.getFechaRecogida());
+		ValidarCampos.esVacio(reserva.getIdCliente());
+		ValidarCampos.esVacio(reserva.getIdCarro());
 		return repositorioReserva.crear(reserva);
 	}
 }

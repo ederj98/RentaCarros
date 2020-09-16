@@ -6,7 +6,7 @@ import com.ceiba.adn.carclick.dominio.modelo.Reserva;
 import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.ClienteEntidad;
 import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.ReservaEntidad;
 
-public class MapeadorReservaEntidad {
+public final class MapeadorReservaEntidad {
 	
 	private MapeadorReservaEntidad() {}
 	
@@ -18,10 +18,8 @@ public class MapeadorReservaEntidad {
 	public static Reserva mapearAModelo(ReservaEntidad reservaEntidad) {
 		System.out.println("AQUI fur!!! "+reservaEntidad.getIdCliente());
 		if (Objects.isNull(reservaEntidad)) {
-			System.out.println("AQUI 1!!! "+reservaEntidad.getIdCliente());
 			return null;
 		}
-		System.out.println("AQUI no entro!!! "+reservaEntidad.getIdCliente());
 		return new Reserva(reservaEntidad.getId(), reservaEntidad.getIdCliente().getIdCliente(), 
 				reservaEntidad.getIdCarro(), reservaEntidad.getFechaRecogida());
 	}

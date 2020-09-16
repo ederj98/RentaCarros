@@ -6,7 +6,7 @@ import com.ceiba.adn.carclick.dominio.modelo.DetalleReserva;
 import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.DetalleReservaEntidad;
 import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.ReservaEntidad;
 
-public class MapeadorDetalleReservaEntidad {
+public final class MapeadorDetalleReservaEntidad {
 
 	private MapeadorDetalleReservaEntidad() {}
 	

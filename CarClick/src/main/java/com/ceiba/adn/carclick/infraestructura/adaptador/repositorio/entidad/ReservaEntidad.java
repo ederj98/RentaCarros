@@ -61,4 +61,16 @@ public class ReservaEntidad {
 	public void setId(long id) {
 		this.id = id;
 	}
+
+	public void setIdCarro(long idCarro) {
+		this.idCarro = idCarro;
+	}
+
+	public void setFechaRecogida(LocalDateTime fechaRecogida) {
+		this.fechaRecogida = fechaRecogida;
+	}
+
+	public void setDetalleReserva(DetalleReservaEntidad detalleReserva) {
+		this.detalleReserva = detalleReserva;
+	}
 }

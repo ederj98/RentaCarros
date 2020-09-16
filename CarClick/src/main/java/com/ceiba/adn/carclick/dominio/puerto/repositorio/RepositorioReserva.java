@@ -1,6 +1,6 @@
 package com.ceiba.adn.carclick.dominio.puerto.repositorio;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import com.ceiba.adn.carclick.dominio.modelo.Reserva;
@@ -13,6 +13,12 @@ public interface RepositorioReserva {
 	 * @return
 	 */
 	public Reserva crear(Reserva reserva);
+	
+	/**
+	 * Metodo encargado de la actualizar una Reserva
+	 * @param reserva
+	 */
+	public void actualizar(Reserva reserva);
 
 	/**
 	 * Metodo encargado de la busqueda de una Reserva dado el ID proporcionado
@@ -29,5 +35,5 @@ public interface RepositorioReserva {
 	 * @param idCliente
 	 * @return
 	 */
-	Collection<Reserva> listar(long idReserva);
+	public List<Reserva> listar(long idCliente);
 }

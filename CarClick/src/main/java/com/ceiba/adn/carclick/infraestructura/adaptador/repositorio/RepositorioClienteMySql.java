@@ -10,18 +10,18 @@ import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.Clie
 import com.ceiba.adn.carclick.infraestructura.mapeador.MapeadorClienteEntidad;
 
 @Repository
-public class AdaptadorRepositorioCliente implements RepositorioCliente {
+public class RepositorioClienteMySql implements RepositorioCliente {
 	
 	private RepositorioClienteJPA clienteJPA;
 	
-	public AdaptadorRepositorioCliente(RepositorioClienteJPA clienteJPA) {
+	public RepositorioClienteMySql(RepositorioClienteJPA clienteJPA) {
 		this.clienteJPA = clienteJPA;
 	}
 
 	@Override
 	public Cliente crear(Cliente cliente) {
 		ClienteEntidad entidad = MapeadorClienteEntidad.mapearAEntidad(cliente);
-		return MapeadorClienteEntidad.mpearAModelo(clienteJPA.save(entidad));
+		return MapeadorClienteEntidad.mapearAModelo(clienteJPA.save(entidad));
 	}
 
 	@Override

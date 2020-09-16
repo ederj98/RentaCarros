@@ -2,7 +2,6 @@ package com.ceiba.adn.carclick.infraestructura.controlador;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,16 +16,15 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.ApiResponse;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/api/detalleReserva")
 @Api(tags = "detalleReserva")
 public class ControladorDetalleReserva {
 
-	private final ManejadorCrearDetalleReserva servicioDetalleReserva;
+	private final ManejadorCrearDetalleReserva manejadorCrearDetalleReserva;
 	
-	public ControladorDetalleReserva(ManejadorCrearDetalleReserva servicioDetalleReserva) {
-		this.servicioDetalleReserva = servicioDetalleReserva;
+	public ControladorDetalleReserva(ManejadorCrearDetalleReserva manejadorCrearDetalleReserva) {
+		this.manejadorCrearDetalleReserva = manejadorCrearDetalleReserva;
 	}
 	
 	@PostMapping
@@ -34,6 +32,6 @@ public class ControladorDetalleReserva {
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Detalle Reserva Creado Exitosamente"),
 			@ApiResponse(code = 400, message = "Solicitud invalida") })
 	public ResponseEntity<DetalleReserva> crearDetalleCarrera(@RequestBody DetalleReservaDTO detalleReservaDTO) {
-		return new ResponseEntity<>(this.servicioDetalleReserva.ejecutar(detalleReservaDTO), HttpStatus.CREATED);
+		return new ResponseEntity<>(this.manejadorCrearDetalleReserva.ejecutar(detalleReservaDTO), HttpStatus.CREATED);
 	}
 }

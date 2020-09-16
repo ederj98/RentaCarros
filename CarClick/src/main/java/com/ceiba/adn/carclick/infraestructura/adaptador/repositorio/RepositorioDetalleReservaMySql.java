@@ -10,11 +10,11 @@ import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.Deta
 import com.ceiba.adn.carclick.infraestructura.mapeador.MapeadorDetalleReservaEntidad;
 
 @Component
-public class AdaptadorRepositorioDetalleReserva implements RepositorioDetalleReserva {
+public class RepositorioDetalleReservaMySql implements RepositorioDetalleReserva {
 
 	private RepositorioDetalleReservaJPA detalleReservaJPA;
 	
-	public AdaptadorRepositorioDetalleReserva(RepositorioDetalleReservaJPA detalleReservaJPA) {
+	public RepositorioDetalleReservaMySql(RepositorioDetalleReservaJPA detalleReservaJPA) {
 		this.detalleReservaJPA = detalleReservaJPA;
 	}
 

@@ -5,7 +5,7 @@ import java.util.Objects;
 import com.ceiba.adn.carclick.dominio.modelo.Cliente;
 import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.ClienteEntidad;
 
-public class MapeadorClienteEntidad {
+public final class MapeadorClienteEntidad {
 
 	private MapeadorClienteEntidad() {}
 	
@@ -14,7 +14,7 @@ public class MapeadorClienteEntidad {
 	 * @param clienteEntidad
 	 * @return
 	 */
-	public static Cliente mpearAModelo(ClienteEntidad clienteEntidad) {
+	public static Cliente mapearAModelo(ClienteEntidad clienteEntidad) {
 		if (Objects.isNull(clienteEntidad)) {
 			return null;
 		}
