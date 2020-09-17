@@ -3,7 +3,6 @@ package com.ceiba.adn.carclick.dominio.puerto.repositorio;
 import java.util.List;
 
 import com.ceiba.adn.carclick.dominio.modelo.Carro;
-import com.ceiba.adn.carclick.dominio.modelo.Cliente;
 
 public interface RepositorioCarro {
 	

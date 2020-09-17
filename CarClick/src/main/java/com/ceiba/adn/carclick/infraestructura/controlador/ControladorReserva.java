@@ -48,7 +48,7 @@ public class ControladorReserva {
 	}
 	
 	@GetMapping(produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<Reserva>> consultarClientes() {
+	public ResponseEntity<List<Reserva>> consultarReservas() {
 		return new ResponseEntity<>(this.manejadorListarReserva.ejecutar(), HttpStatus.OK);
 	}
 	

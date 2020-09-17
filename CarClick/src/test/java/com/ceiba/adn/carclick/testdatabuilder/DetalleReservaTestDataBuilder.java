@@ -42,5 +42,4 @@ public class DetalleReservaTestDataBuilder {
 		this.costo = costo;
 		return this;
 	}
-
 }

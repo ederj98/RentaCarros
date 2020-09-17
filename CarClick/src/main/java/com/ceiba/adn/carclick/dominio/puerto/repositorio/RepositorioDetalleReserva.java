@@ -17,7 +17,7 @@ public interface RepositorioDetalleReserva {
 	 * Metodo encargado de la busqueda de una DetalleReserva dado el ID proporcionado
 	 * 
 	 * @param id
-	 * @return Optional<DetalleReserva> Optional vacio si no encuentra un Cliente con el id proporcionado
+	 * @return Optional<DetalleReserva> Optional vacio si no encuentra un DetalleReserva con el id proporcionado
 	 *         
 	 */
 	public Optional<DetalleReserva> buscarDetalleReserva(long idDetalleReserva);
