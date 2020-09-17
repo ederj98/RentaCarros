@@ -33,7 +33,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @TestPropertySource(locations = "classpath:application-test.properties")
 public class ControladorCarroTest {
 
-	private static final String URL_BASE = "http://localhost:8080/api/cliente";
+	private static final String URL_BASE = "http://localhost:8080/api/carro";
 
 	@Autowired
 	private ObjectMapper objectMapperTest;

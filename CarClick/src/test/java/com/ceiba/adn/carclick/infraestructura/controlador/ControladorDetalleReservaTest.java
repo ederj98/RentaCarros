@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,7 +34,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @TestPropertySource(locations = "classpath:application-test.properties")
 public class ControladorDetalleReservaTest {
 
-	private static final String URL_BASE = "http://localhost:8080/api/cliente";
+	private static final String URL_BASE = "http://localhost:8080/api/detalleReserva";
 
 	@Autowired
 	private ObjectMapper objectMapperTest;
@@ -50,19 +51,27 @@ public class ControladorDetalleReservaTest {
 
 	
 	@Test
+	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-reserva.sql")
 	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
 	public void cuandoPeticionCrearDetalleReservaConReservaNoExistenteEntoncesDeberiaCrear() throws Exception {
 		// arrange
-		DetalleReservaDTO detalleReservaDTO = new DetalleReservaDTOTestDataBuilder()
-				.conFechaEntrega(LocalDateTime.of(2020, 9, 16, 18, 38))
-				.conCosto(BigDecimal.valueOf(4221750.00)).build();
+		DetalleReservaDTO detalleReservaDTO = new DetalleReservaDTOTestDataBuilder().build();
 
 		// act - assert
-		mockMvc.perform(post(URL_BASE)
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapperTest.writeValueAsString(detalleReservaDTO)))
-				.andDo(print())
-				.andExpect(status().isCreated());
+		if (LocalTime.now().isAfter(LocalTime.of(20, 0)) ||
+				LocalTime.now().isBefore(LocalTime.of(7, 0))) {
+			mockMvc.perform(post(URL_BASE)
+					.contentType(MediaType.APPLICATION_JSON)
+					.content(objectMapperTest.writeValueAsString(detalleReservaDTO)))
+					.andDo(print())
+					.andExpect(status().isBadRequest());
+		} else {
+			mockMvc.perform(post(URL_BASE)
+					.contentType(MediaType.APPLICATION_JSON)
+					.content(objectMapperTest.writeValueAsString(detalleReservaDTO)))
+					.andDo(print())
+					.andExpect(status().isCreated());
+		}
 	}
 	
 	@Test
@@ -77,6 +86,6 @@ public class ControladorDetalleReservaTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapperTest.writeValueAsString(detalleReservaDTO)))
 				.andDo(print())
-				.andExpect(status().isPreconditionFailed());
+				.andExpect(status().isBadRequest());
 	}
 }

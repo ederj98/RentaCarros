@@ -34,6 +34,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class ControladorClienteTest {
 
 	private static final String URL_BASE = "http://localhost:8080/api/cliente";
+	private static final String GET_URL_BASE = "http://localhost:8080/api/cliente/{id}";
 
 	@Autowired
 	private ObjectMapper objectMapperTest;
@@ -75,19 +76,22 @@ public class ControladorClienteTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapperTest.writeValueAsString(clienteDTO)))
 				.andDo(print())
-				.andExpect(status().isPreconditionFailed());
+				.andExpect(status().isBadRequest());
 	}
 	
 	@Test
 	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-cliente.sql")
 	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
 	public void cuandoPeticionConsultarClienteEntoncesDeberiaRetornarCliente() throws Exception {
-		// arrange - act - assert
-		mockMvc.perform(get(URL_BASE).
+		// arrange 
+		final long idCliente = 1123321432;
+		
+		// act - assert
+		mockMvc.perform(get(GET_URL_BASE, idCliente).
 				contentType(MediaType.APPLICATION_JSON).
 				accept(MediaType.APPLICATION_JSON))
 				.andDo(print())
-				.andExpect(jsonPath("$.*", hasSize(1)))
+				.andExpect(jsonPath("$.*", hasSize(5)))
 				.andExpect(status().isOk());
 	}
 }

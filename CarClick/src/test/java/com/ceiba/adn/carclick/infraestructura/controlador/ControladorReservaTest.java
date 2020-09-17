@@ -33,7 +33,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @TestPropertySource(locations = "classpath:application-test.properties")
 public class ControladorReservaTest {
 
-	private static final String URL_BASE = "http://localhost:8080/api/cliente";
+	private static final String URL_BASE = "http://localhost:8080/api/reserva";
 
 	@Autowired
 	private ObjectMapper objectMapperTest;
@@ -50,6 +50,7 @@ public class ControladorReservaTest {
 
 	
 	@Test
+	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-cliente-carro.sql")
 	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
 	public void cuandoPeticionCrearReservaNoExisteEntoncesDeberiaCrear() throws Exception {
 		// arrange
@@ -89,7 +90,7 @@ public class ControladorReservaTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapperTest.writeValueAsString(reservaDTO)))
 				.andDo(print())
-				.andExpect(status().isPreconditionFailed());
+				.andExpect(status().isBadRequest());
 	}
 	
 	@Test
@@ -104,7 +105,7 @@ public class ControladorReservaTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapperTest.writeValueAsString(reservaDTO)))
 				.andDo(print())
-				.andExpect(status().isPreconditionFailed());
+				.andExpect(status().isBadRequest());
 	}
 	
 	@Test
