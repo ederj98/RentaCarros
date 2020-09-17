@@ -65,6 +65,35 @@ public class ControladorReservaTest {
 				.andExpect(status().isCreated());
 	}
 	
+	@Test
+	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-cliente-carro.sql")
+	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
+	public void cuandoPeticionCrearReservaClienteNoExisteEntoncesDeberiaLanzarExcepcion() throws Exception {
+		// arrange
+		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder().conIdCliente(1223222333).build();
+
+		// act - assert
+		mockMvc.perform(post(URL_BASE)
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapperTest.writeValueAsString(reservaDTO)))
+				.andDo(print())
+				.andExpect(status().isBadRequest());
+	}
+	
+	@Test
+	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-cliente-carro.sql")
+	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
+	public void cuandoPeticionCrearReservaCarroNoExisteEntoncesDeberiaLanzarExcepcion() throws Exception {
+		// arrange
+		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder().conIdCarro(12).build();
+
+		// act - assert
+		mockMvc.perform(post(URL_BASE)
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapperTest.writeValueAsString(reservaDTO)))
+				.andDo(print())
+				.andExpect(status().isBadRequest());
+	}
 	
 	@Test
 	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/listar-reservas.sql")
@@ -114,7 +143,7 @@ public class ControladorReservaTest {
 	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
 	public void cuandoPeticionActualizarReservaClienteExisteCarroExisteEntoncesDeberiaActualizar() throws Exception {
 		// arrange
-		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder().build();
+		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder().conIdCarro(2).build();
 
 		// act - assert
 		mockMvc.perform(put(URL_BASE)
