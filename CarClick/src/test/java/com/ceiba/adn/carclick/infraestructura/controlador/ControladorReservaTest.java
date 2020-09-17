@@ -3,6 +3,7 @@ package com.ceiba.adn.carclick.infraestructura.controlador;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -86,7 +87,7 @@ public class ControladorReservaTest {
 		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder().conIdCliente(1112587790).build();
 
 		// act - assert
-		mockMvc.perform(post(URL_BASE)
+		mockMvc.perform(put(URL_BASE)
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapperTest.writeValueAsString(reservaDTO)))
 				.andDo(print())
@@ -101,7 +102,7 @@ public class ControladorReservaTest {
 		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder().conIdCarro(20).build();
 
 		// act - assert
-		mockMvc.perform(post(URL_BASE)
+		mockMvc.perform(put(URL_BASE)
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapperTest.writeValueAsString(reservaDTO)))
 				.andDo(print())
@@ -116,7 +117,7 @@ public class ControladorReservaTest {
 		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder().build();
 
 		// act - assert
-		mockMvc.perform(post(URL_BASE)
+		mockMvc.perform(put(URL_BASE)
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapperTest.writeValueAsString(reservaDTO)))
 				.andDo(print())
