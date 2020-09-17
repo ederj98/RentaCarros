@@ -1,10 +1,7 @@
 package com.ceiba.adn.carclick.infraestructura.controlador;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.math.BigDecimal;
@@ -26,13 +23,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.ceiba.adn.carclick.CarClickApplication;
-import com.ceiba.adn.carclick.aplicacion.dto.ClienteDTO;
 import com.ceiba.adn.carclick.aplicacion.dto.DetalleReservaDTO;
-import com.ceiba.adn.carclick.aplicacion.dto.ReservaDTO;
-import com.ceiba.adn.carclick.dominio.modelo.DetalleReserva;
-import com.ceiba.adn.carclick.testdatabuilder.ClienteDTOTestDataBuilder;
 import com.ceiba.adn.carclick.testdatabuilder.DetalleReservaDTOTestDataBuilder;
-import com.ceiba.adn.carclick.testdatabuilder.ReservaDTOTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
