@@ -24,10 +24,10 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
 
     public ManejadorError() {
         CODIGOS_ESTADO.put(ExcepcionCarroNoRegistrado.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
-        CODIGOS_ESTADO.put(ExcepcionClienteNoRegistrado.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
+        CODIGOS_ESTADO.put(ExcepcionClienteNoRegistrado.class.getSimpleName(), HttpStatus.NOT_FOUND.value());
         CODIGOS_ESTADO.put(ExcepcionDuplicidad.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         CODIGOS_ESTADO.put(ExcepcionFechaFueraHorarioServicio.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
-        CODIGOS_ESTADO.put(ExcepcionReservaNoRegistrada.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
+        CODIGOS_ESTADO.put(ExcepcionReservaNoRegistrada.class.getSimpleName(), HttpStatus.NOT_FOUND.value());
         CODIGOS_ESTADO.put(ExcepcionValidarCampo.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         //en caso de tener otra excepcion matricularla aca
     }

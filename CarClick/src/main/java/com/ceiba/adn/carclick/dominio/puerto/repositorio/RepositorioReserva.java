@@ -19,6 +19,13 @@ public interface RepositorioReserva {
 	 * @param reserva
 	 */
 	public void actualizar(Reserva reserva);
+	
+	/**
+	 * Metodo que permite determinar si previamente se registro una reserva
+	 * @param idReserva
+	 * @return
+	 */
+	public boolean existe(long idReserva);
 
 	/**
 	 * Metodo encargado de la busqueda de una Reserva dado el ID proporcionado

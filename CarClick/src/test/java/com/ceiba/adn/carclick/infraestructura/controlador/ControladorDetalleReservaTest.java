@@ -77,7 +77,7 @@ public class ControladorDetalleReservaTest {
 	@Test
 	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-detalle-reserva.sql")
 	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
-	public void cuandoPeticionCrearDetalleReservaConReservaExistenteEntoncesDeberiaLanzarExcepcion() throws Exception {
+	public void cuandoPeticionCrearDetalleReservaConReservaNoExistenteEntoncesDeberiaLanzarExcepcion() throws Exception {
 		// arrange
 		DetalleReservaDTO detalleReservaDTO = new DetalleReservaDTOTestDataBuilder().conIdReserva(50).build();
 		
@@ -86,6 +86,6 @@ public class ControladorDetalleReservaTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapperTest.writeValueAsString(detalleReservaDTO)))
 				.andDo(print())
-				.andExpect(status().isBadRequest());
+				.andExpect(status().isNotFound());
 	}
 }

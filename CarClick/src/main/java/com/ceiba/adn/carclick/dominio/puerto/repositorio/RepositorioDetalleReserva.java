@@ -3,7 +3,6 @@ package com.ceiba.adn.carclick.dominio.puerto.repositorio;
 import java.util.Optional;
 
 import com.ceiba.adn.carclick.dominio.modelo.DetalleReserva;
-import com.ceiba.adn.carclick.dominio.modelo.Reserva;
 
 public interface RepositorioDetalleReserva {
 

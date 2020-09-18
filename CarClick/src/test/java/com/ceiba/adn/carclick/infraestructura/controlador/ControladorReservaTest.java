@@ -77,7 +77,7 @@ public class ControladorReservaTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapperTest.writeValueAsString(reservaDTO)))
 				.andDo(print())
-				.andExpect(status().isBadRequest());
+				.andExpect(status().isNotFound());
 	}
 	
 	@Test
@@ -120,7 +120,7 @@ public class ControladorReservaTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapperTest.writeValueAsString(reservaDTO)))
 				.andDo(print())
-				.andExpect(status().isBadRequest());
+				.andExpect(status().isNotFound());
 	}
 	
 	@Test
