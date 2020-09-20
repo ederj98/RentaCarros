@@ -1,0 +1,22 @@
+<h1>Registrar Reserva</h1>
+<p>Digite los siguientes campos para registrar una nueva reserva.</p>
+<br/>
+<form [formGroup]="reservaForm" (ngSubmit)="crear()">
+  <div class="form-group">
+    <label for="idCliente">Identificación cliente</label>
+    <input type="number" class="form-control" id="idCliente" formControlName="idCliente" >
+  </div>
+  <div class="form-group">
+    <label for="idCarro">Vehiculo</label>
+    <select class="form-control" id="idCarro" formControlName="idCarro" >
+      <option *ngFor="let item of listaCarros | async" value= {{item.id}} >{{ item.modelo }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="fechaRecogida">Fecha recogida</label>
+    <input type="text" class="form-control" id="fechaRecogida" formControlName="fechaRecogida" placeholder="yyyy-MM-dd HH:mm:ss">
+  </div>
+  <button type="submit" class="btn btn-primary">Crear reserva</button>
+</form>
+<br/>
+<br/>

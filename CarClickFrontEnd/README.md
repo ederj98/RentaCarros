@@ -1,27 +1,26 @@
-# CarClickFrontEnd
+## Angular base .css
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.2.
+### Estilos visuales del proyecto
 
-## Development server
+Los estilos que irán dentro de angular-base.css serán agregados en el style normalmente.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Ejemplo:
 
-## Code scaffolding
+![añadir estilos css](https://drive.google.com/uc?export=download&id=1v212sYQ0DNnIfxwZq7mMsEhdRoHTeCwZ)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Librerias externas
 
-## Build
+La carpeta vendor es donde tendremos estas extensiones que son descargadas de librerías externas.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```bash
+assets / css / vendor
+```
+Ejemplo:
 
-## Running unit tests
+![añadir librerias visuales externas](https://drive.google.com/uc?export=download&id=1-IkUTU_jaazJKbj6PiF4UCgWwkMu5KKX)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Aplicación de estilos por componentes
 
-## Running end-to-end tests
+Tener en cuenta agregar los estilos por cada componente, es decir, cada vista debe contar con su propia hoja de estilos, esto aplica para aplicar estilos atributos que afectan sólo ese componente.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+![añadir librerias visuales externas](https://drive.google.com/uc?export=download&id=1Dh8SuyvluRxRkov3zYSbBwjn-u2yzAGH)

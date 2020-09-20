@@ -1,0 +1,11 @@
+<h1>{{ title }}</h1>
+<h3>{{ subtitle }}</h3>
+<form (ngSubmit)="consultar()">
+    <div class="row">
+      <div class="col-sm-4">
+        <input validar type="number" id="idCliente" name="idCliente" class="form-control"
+          formControlName="idCliente">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>

@@ -1,26 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { CustomerSearchComponent } from './customer-search/customer-search.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CustomerBookingManageComponent } from './customer-booking-manage/customer-booking-manage.component';
+import { HomeComponent } from '@home/home.component';
+import { ProductoModule } from '@producto/producto.module';
+import { CoreModule } from '@core/core.module';
+import { CookieService } from 'ngx-cookie-service';
+import { ClienteModule } from './feature/cliente/cliente.module';
+import { CarroModule } from './feature/carro/carro.module';
+import { ReservaModule } from './feature/reserva/reserva.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
-    CustomerSearchComponent,
-    CustomerBookingManageComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
+    ProductoModule,
+    ClienteModule,
+    CarroModule,
+    ReservaModule,
+    CoreModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [CookieService],
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MenuItem } from '@core/modelo/menu-item';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+  title = 'app-base';
+  public companies: MenuItem[] = [
+    { url: '/reserva', nombre: 'Reservas' },
+    { url: '/cliente', nombre: 'Clientes' },
+    { url: '/carro', nombre: 'Carros' }
+  ];  
 }

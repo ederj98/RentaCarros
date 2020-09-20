@@ -1,0 +1,8 @@
+<br/>
+<ul class="nav nav-tabs">
+  <a *ngFor="let item of items" [routerLink]="item.url" routerLinkActive="active">
+    <li class="nav-item">
+      <a class="nav-link" href="#">{{item.nombre}}</a>
+    </li>
+  </a>
+</ul>

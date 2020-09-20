@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CustomerBookingManageComponent } from './customer-booking-manage/customer-booking-manage.component';
-import { HomePageComponent } from './home-page/home-page.component';
+import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomePageComponent },
-  { path: 'customer-booking', component: CustomerBookingManageComponent }
+  { path: '', redirectTo: '/reserva', pathMatch: 'full' },
+  { path: 'reserva', loadChildren: () => import('./feature/reserva/reserva.module').then(mod => mod.ReservaModule) },
+  { path: 'cliente', loadChildren: () => import('./feature/cliente/cliente.module').then(mod => mod.ClienteModule) },
+  { path: 'carro', loadChildren: () => import('./feature/carro/carro.module').then(mod => mod.CarroModule) }
+  
 ];
 
 @NgModule({

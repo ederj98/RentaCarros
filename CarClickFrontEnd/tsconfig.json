@@ -1,4 +1,3 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -6,15 +5,44 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "module": "es2020",
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "module": "es2020",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@core-service/*": [
+        "src/app/core/services/*"
+      ],
+      "@home/*": [
+        "src/app/feature/home/*"
+      ],
+      "@producto/*": [
+        "src/app/feature/producto/*"
+      ],
+      "@cliente/*": [
+        "src/app/feature/cliente/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
   }
 }

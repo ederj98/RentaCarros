@@ -1,31 +1,30 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: []
     }).compileComponents();
-  });
+  }));
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
+    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'CarClickFrontEnd'`, () => {
+  it(`should have as title 'app-base'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('CarClickFrontEnd');
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('app-base');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('CarClickFrontEnd app is running!');
-  });
+
 });

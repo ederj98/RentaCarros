@@ -1,0 +1,29 @@
+<form [formGroup]="carroForm" (ngSubmit)="crear()">
+  <div class="form-group">
+    <label for="modelo">Modelo</label>
+    <input type="number" class="form-control" id="modelo" formControlName="modelo" >
+  </div>
+  <div class="form-group">
+    <label for="tipoCambios">Tipo de cambios</label>
+    <input type="text" class="form-control" id="tipoCambios" formControlName="tipoCambios" >
+  </div>
+  <div class="form-group">
+    <label for="numPasajeros">Numero de pasajeros</label>
+    <input type="number" class="form-control" id="numPasajeros" formControlName="numPasajeros" >
+  </div>
+  <div class="form-group">
+    <label for="numPuertas">Numero de puertas</label>
+    <input type="number" class="form-control" id="numPuertas" formControlName="numPuertas" >
+  </div>
+  <div class="form-group">
+    <label for="tipoCombustible">Tipo de combustible</label>
+    <select class="form-control" id="tipoCombustible" formControlName="tipoCombustible" >
+      <option>Gasolina</option>
+      <option>Gas</option>
+      <option>Electrico</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Guardar carro</button>
+</form>
+<br/>
+<br/>

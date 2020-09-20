@@ -1,0 +1,74 @@
+<h1>Registrar Producto</h1>
+<h3>Ejemplo validacion de formularios reactivos con directiva</h3>
+<form [formGroup]="productoForm" (ngSubmit)="cerar()">
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Id:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="idProducto" name="idProducto" placeholder="Id producto" class="form-control"
+        formControlName="id">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Descripción:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="descripcionProducto" name="descripcion" placeholder="Descripción producto"
+        class="form-control" formControlName="descripcion">
+    </div>
+  </div>
+</form>
+
+<!----------------------------------------------------->
+<h1>Registrar Cliente</h1>
+<p>Digite los siguientes campos para registrar un nuevo cliente.</p>
+<br/>
+<form [formGroup]="productoForm" (ngSubmit)="cerar()">
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Identificación:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="number" id="idCliente" name="idCliente" class="form-control"
+        formControlName="idCliente">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Nombre completo:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="nombreCompleto" name="nombreCompleto"
+        class="form-control" formControlName="nombreCompleto">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Dirección:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="direccion" name="direccion"
+        class="form-control" formControlName="direccion">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Telefono:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="telefono" name="telefono"
+        class="form-control" formControlName="telefono">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Correo electronico:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="email" name="email"
+        class="form-control" formControlName="email">
+    </div>
+  </div>
+</form>
