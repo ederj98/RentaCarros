@@ -27,8 +27,8 @@
       "@core-service/*": [
         "src/app/core/services/*"
       ],
-      "@producto/*": [
-        "src/app/feature/producto/*"
+      "@home/*": [
+        "src/app/feature/home/*"
       ],
       "@cliente/*": [
         "src/app/feature/cliente/*"

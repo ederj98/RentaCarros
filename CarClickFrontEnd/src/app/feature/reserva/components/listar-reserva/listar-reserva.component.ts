@@ -17,5 +17,4 @@ export class ListarReservaComponent implements OnInit {
   ngOnInit() {
     this.listaReserva = this.reservaService.consultar();
   }
-
 }

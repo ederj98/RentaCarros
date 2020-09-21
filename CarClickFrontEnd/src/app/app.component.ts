@@ -10,6 +10,7 @@ import { MenuItem } from '@core/modelo/menu-item';
 export class AppComponent {
   title = 'car-click';
   public menu: MenuItem[] = [
+    { url: '/home', nombre: 'Inicio' },
     { url: '/reserva', nombre: 'Reservas' },
     { url: '/cliente', nombre: 'Clientes' },
     { url: '/carro', nombre: 'Carros' }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { formatDate} from '@angular/common';
 import { Observable } from 'rxjs';
 
 import { ReservaService } from '../../shared/service/reserva.service';
@@ -37,7 +38,7 @@ export class ActualizarReservaComponent implements OnInit {
       this.reservaForm.get('id').setValue(this.id);
       this.reservaForm.get('idCliente').setValue(response.idCliente);
       this.reservaForm.get('idCarro').setValue(response.idCarro);
-      this.reservaForm.get('fechaRecogida').setValue(response.fechaRecogida);
+      this.reservaForm.get('fechaRecogida').setValue(formatDate(new Date(response.fechaRecogida), 'yyyy-MM-dd HH:mm:ss', 'en-US'));
       },
       error => {
         console.log(`Error ${error.status}: cliente no encontrado`);
