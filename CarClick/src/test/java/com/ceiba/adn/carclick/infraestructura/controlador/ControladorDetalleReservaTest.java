@@ -1,11 +1,12 @@
 package com.ceiba.adn.carclick.infraestructura.controlador;
 
+import static org.hamcrest.Matchers.hasSize;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import org.junit.jupiter.api.Test;
@@ -35,6 +36,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class ControladorDetalleReservaTest {
 
 	private static final String URL_BASE = "http://localhost:8080/api/detalleReserva";
+	private static final String GET_URL_BASE = "http://localhost:8080/api/detalleReserva/{id}";
 
 	@Autowired
 	private ObjectMapper objectMapperTest;
@@ -87,5 +89,21 @@ public class ControladorDetalleReservaTest {
 				.content(objectMapperTest.writeValueAsString(detalleReservaDTO)))
 				.andDo(print())
 				.andExpect(status().isNotFound());
+	}
+	
+	@Test
+	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-detalle-reserva.sql")
+	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
+	public void cuandoPeticionConsultarClienteEntoncesDeberiaRetornarCliente() throws Exception {
+		// arrange 
+		final long idReserva = 1;
+		
+		// act - assert
+		mockMvc.perform(get(GET_URL_BASE, idReserva).
+				contentType(MediaType.APPLICATION_JSON).
+				accept(MediaType.APPLICATION_JSON))
+				.andDo(print())
+				.andExpect(jsonPath("$.*", hasSize(4)))
+				.andExpect(status().isOk());
 	}
 }

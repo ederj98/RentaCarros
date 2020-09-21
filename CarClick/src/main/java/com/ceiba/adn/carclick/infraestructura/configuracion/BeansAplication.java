@@ -10,6 +10,7 @@ import com.ceiba.adn.carclick.aplicacion.manejador.ManejadorCrearDetalleReserva;
 import com.ceiba.adn.carclick.aplicacion.manejador.ManejadorCrearReserva;
 import com.ceiba.adn.carclick.aplicacion.manejador.ManejadorListarCarro;
 import com.ceiba.adn.carclick.aplicacion.manejador.ManejadorListarCliente;
+import com.ceiba.adn.carclick.aplicacion.manejador.ManejadorListarDetalleReserva;
 import com.ceiba.adn.carclick.aplicacion.manejador.ManejadorListarReserva;
 import com.ceiba.adn.carclick.dominio.puerto.repositorio.RepositorioCarro;
 import com.ceiba.adn.carclick.dominio.puerto.repositorio.RepositorioCliente;
@@ -22,6 +23,7 @@ import com.ceiba.adn.carclick.dominio.servicio.ServicioCrearDetalleReserva;
 import com.ceiba.adn.carclick.dominio.servicio.ServicioCrearReserva;
 import com.ceiba.adn.carclick.dominio.servicio.ServicioListarCarros;
 import com.ceiba.adn.carclick.dominio.servicio.ServicioListarCliente;
+import com.ceiba.adn.carclick.dominio.servicio.ServicioListarDetalleReserva;
 import com.ceiba.adn.carclick.dominio.servicio.ServicioListarReservas;
 
 @Configuration
@@ -87,6 +89,16 @@ public class BeansAplication {
 	@Bean
 	public ServicioCrearDetalleReserva servicioCrearDetalleReserva(final RepositorioDetalleReserva repositorioDetalleReserva, final RepositorioReserva repositorioReserva) {
 		return new ServicioCrearDetalleReserva(repositorioDetalleReserva, repositorioReserva);
+	}
+	
+	@Bean
+	public ManejadorListarDetalleReserva manejadorListarDetalleReserva(final ServicioListarDetalleReserva servicioListarDetalleReserva) {
+		return new ManejadorListarDetalleReserva(servicioListarDetalleReserva);
+	}
+	
+	@Bean
+	public ServicioListarDetalleReserva servicioListarDetalleReserva(final RepositorioDetalleReserva repositorioDetalleReserva) {
+		return new ServicioListarDetalleReserva(repositorioDetalleReserva);
 	}
 	
 	@Bean

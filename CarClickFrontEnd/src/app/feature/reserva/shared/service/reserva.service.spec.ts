@@ -47,6 +47,6 @@ describe('ReservaService', () => {
     });
     const req = httpMock.expectOne(apiEndpointReserva);
     expect(req.request.method).toBe('POST');
-    req.event(new HttpResponse<boolean>({body: true}));
+    req.event(new HttpResponse<Reserva>({body: dummyReserva}));
   });
 });

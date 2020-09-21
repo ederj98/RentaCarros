@@ -13,12 +13,12 @@ public class ServicioCrearCliente {
 		this.repositorioCliente = repositorioCliente;
 	}
 	
-	public Cliente ejecutar(Cliente cliente) {
+	public void ejecutar(Cliente cliente) {
 		validarRegistroPrevio(cliente.getIdCliente());
 		ValidarCampos.esVacio(cliente.getIdCliente());
 		ValidarCampos.esVacio(cliente.getNombreCompleto());
 		ValidarCampos.esVacio(cliente.getEmail());
-		return this.repositorioCliente.crear(cliente);
+		this.repositorioCliente.crear(cliente);
 	}
 
 	private void validarRegistroPrevio(long idCliente) {

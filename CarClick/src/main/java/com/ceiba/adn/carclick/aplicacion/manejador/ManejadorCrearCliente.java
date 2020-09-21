@@ -21,8 +21,8 @@ public class ManejadorCrearCliente {
 	 * @return
 	 */
 	@Transactional
-	public Cliente ejecutar(ClienteDTO clienteDTO) {
+	public void ejecutar(ClienteDTO clienteDTO) {
 		Cliente cliente = MapeadorCliente.mapearAModelo(clienteDTO);
-		return this.servicioCrearCliente.ejecutar(cliente);
+		this.servicioCrearCliente.ejecutar(cliente);
 	}
 }

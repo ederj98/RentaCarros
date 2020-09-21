@@ -9,12 +9,17 @@ export class ClienteService {
 
   constructor(protected http: HttpService) {}
 
-  /*public consultarPorId(id: number) {
-    return this.http.doGetParameters<Cliente>(`${environment.endpoint}/cliente`, , this.http.optsName('consultar productos')):
-  }*/
+  public consultarPorId(cliente: Cliente) {
+    return this.http.doGetWithParameter<Cliente>(`${environment.endpoint}/cliente`, cliente.idCliente, this.http.optsName('consultar reservas'));
+  }
 
   public guardar(cliente: Cliente) {
     return this.http.doPost<Cliente, boolean>(`${environment.endpoint}/cliente`, cliente,
+                                                this.http.optsName('crear/actualizar clientes'));
+  }
+
+  public actualizar(cliente: Cliente) {
+    return this.http.doPut<Cliente, boolean>(`${environment.endpoint}/cliente`, cliente,
                                                 this.http.optsName('crear/actualizar clientes'));
   }
 }

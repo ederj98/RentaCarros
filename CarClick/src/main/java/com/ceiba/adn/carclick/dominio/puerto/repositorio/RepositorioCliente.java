@@ -11,7 +11,7 @@ public interface RepositorioCliente {
 	 * @param cliente
 	 * @return
 	 */
-	public Cliente crear(Cliente cliente);
+	public void crear(Cliente cliente);
 		
 	/**
 	 * Metodo que permite determinar si previamente se registro el Cliente

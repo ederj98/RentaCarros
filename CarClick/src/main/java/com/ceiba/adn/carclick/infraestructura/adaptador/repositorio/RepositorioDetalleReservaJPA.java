@@ -1,6 +1,7 @@
 package com.ceiba.adn.carclick.infraestructura.adaptador.repositorio;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
 
 import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.DetalleReservaEntidad;
 
@@ -9,4 +10,12 @@ import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.Deta
  * @author eder.fernandez
  *
  */
-public interface RepositorioDetalleReservaJPA extends JpaRepository<DetalleReservaEntidad, Long> {}
+public interface RepositorioDetalleReservaJPA extends JpaRepository<DetalleReservaEntidad, Long> {
+	
+	/**
+	 * Metodo encargado de consultar un DetalleReserva por numero de reserva.
+	 * @param idReserva
+	 * @return Optional<DetalleReserva>
+	 */
+	public DetalleReservaEntidad findByReservaId(@Param("id") long idReserva);
+}

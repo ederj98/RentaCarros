@@ -19,5 +19,5 @@ public interface RepositorioDetalleReserva {
 	 * @return Optional<DetalleReserva> Optional vacio si no encuentra un DetalleReserva con el id proporcionado
 	 *         
 	 */
-	public Optional<DetalleReserva> buscarDetalleReserva(long idDetalleReserva);
+	public Optional<DetalleReserva> buscarDetalleReserva(long idReserva);
 }

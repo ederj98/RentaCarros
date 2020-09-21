@@ -8,12 +8,16 @@ export class ManejadorError implements ErrorHandler {
   constructor() {}
 
   handleError(error: string | Error): void {
+    
     const mensajeError = this.mensajePorDefecto(error);
     this.imprimirErrorConsola(mensajeError);
+    this.imprimirErrorEnPantalla(mensajeError);
   }
 
   private mensajePorDefecto(error) {
+    
     if (error instanceof HttpErrorResponse) {
+      
       if (!navigator.onLine) {
         return HTTP_ERRORES_CODIGO.NO_HAY_INTERNET;
       }
@@ -21,7 +25,7 @@ export class ManejadorError implements ErrorHandler {
         return this.obtenerErrorHttpCode(error.status);
       }
     }
-    return error;
+    return error.error.mensaje;
   }
 
   private imprimirErrorConsola(mensaje): void {
@@ -35,10 +39,15 @@ export class ManejadorError implements ErrorHandler {
     }
   }
 
+  private imprimirErrorEnPantalla(mensaje): void {
+    alert(mensaje);
+  }
+
   public obtenerErrorHttpCode(httpCode: number): string {
     if (HTTP_ERRORES_CODIGO.hasOwnProperty(httpCode)) {
-      return HTTP_ERRORES_CODIGO.PETICION_FALLIDA;
-    }
-    return HTTP_ERRORES_CODIGO[httpCode];
+      return HTTP_ERRORES_CODIGO[httpCode];
+      
+    } 
+    return HTTP_ERRORES_CODIGO.PETICION_FALLIDA;
   }
 }

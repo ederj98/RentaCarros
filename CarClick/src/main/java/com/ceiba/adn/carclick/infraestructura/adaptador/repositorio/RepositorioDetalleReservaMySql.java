@@ -25,7 +25,8 @@ public class RepositorioDetalleReservaMySql implements RepositorioDetalleReserva
 	}
 
 	@Override
-	public Optional<DetalleReserva> buscarDetalleReserva(long idDetalleReserva) {
-		return detalleReservaJPA.findById(idDetalleReserva).map(MapeadorDetalleReservaEntidad::mapearAModelo);
+	public Optional<DetalleReserva> buscarDetalleReserva(long idReserva) {
+		DetalleReserva detalle = MapeadorDetalleReservaEntidad.mapearAModelo(detalleReservaJPA.findByReservaId(idReserva));
+		return Optional.ofNullable(detalle);
 	}
 }

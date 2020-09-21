@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { ReservaService } from '../../shared/service/reserva.service';
+import { DetalleReserva } from '../../shared/model/detalle-reserva';
 
 @Component({
   selector: 'app-detalle-reserva',
@@ -11,6 +12,8 @@ import { ReservaService } from '../../shared/service/reserva.service';
 })
 export class DetalleReservaComponent implements OnInit {
   id: number;
+  reserva: DetalleReserva;
+
   constructor(
     private route: ActivatedRoute,
     protected reservaService: ReservaService,
@@ -19,8 +22,21 @@ export class DetalleReservaComponent implements OnInit {
 
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('id');
-    
-    //this.listaReserva = this.reservaService.consultar();
+    this.reservaService.consultarDetallePorId(this.id).subscribe(
+      response => {
+        this.reserva = response;
+      },
+      error => {
+        console.log(`Error ${error.status}: detalle reserva no encontrada`);
+      } 
+    );
+  }
+
+  crear() {
+    this.reservaService.guardarDetalle(new DetalleReserva(null, this.id, null, null)).subscribe(
+      response => {
+      this.reserva = response;
+    });
   }
 
   irAtras(): void {

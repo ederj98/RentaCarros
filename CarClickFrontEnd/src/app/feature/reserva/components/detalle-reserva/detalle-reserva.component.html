@@ -2,23 +2,15 @@
 <h1>Detalle Reserva</h1>
 <p>A continuación encontrara los detalles de la reserva.</p>
 <br/>
-<!--<div class="card-columns">
-  <a *ngFor="let item of listaReserva | async" routerLink="/detail/{{item.id}}">
-    <div class="card bg-light">
-      <div class="card-body text-center">
-        <p class="card-text"> Numero de reserva. {{item.id}}</p>
-        <p class="card-text">Id Cliente. {{item.idCliente}}</p>
-        <p class="card-text">Id Carro. {{item.idCarro}}</p>
-        <p class="card-text">Fecha recogida. {{item.fechaRecogida}}</p>
-      </div>
-    </div> 
-  </a> 
-</div>-->
 <h5>Numero de reserva. </h5><p>{{ id }}</p>
-
-<h5>Costo. </h5><p></p>
-<h5>Fecha de entrega. </h5><p></p>
-<p>La reserva se encuentra activa, para finalizar la reserva y calcular el costo del servicio haga clic en el botón "Confirmar entrega"</p>
-<button class="btn btn-success"  >Confirmar entrega</button>
-<br/><br/>
+<div *ngIf="reserva">
+  <h5>Fecha de entrega. </h5><p>{{ reserva.fechaEntrega }}</p>
+  <h5>Costo. </h5><p>{{ reserva.costo | currency }}</p>
+</div>
+<div class="alert alert-warning" *ngIf="!reserva">
+  <p>La reserva se encuentra activa, para finalizar la reserva y calcular el costo del servicio haga clic en el botón "Confirmar entrega"</p>
+  <hr>
+  <button class="btn btn-success" (click)="crear()">Confirmar entrega</button>
+</div>
+<br/>
 <button class="btn btn-primary" (click)="irAtras()" >Volver</button>

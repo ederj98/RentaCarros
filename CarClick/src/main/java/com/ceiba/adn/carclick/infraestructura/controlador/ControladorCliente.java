@@ -36,8 +36,9 @@ public class ControladorCliente {
 	@ApiOperation(value = "Crear Cliente", notes = "Servicio para Crear un Cliente")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Cliente Creado Exitosamente"),
 			@ApiResponse(code = 400, message = "Solicitud invalida") })
-	public ResponseEntity<Cliente> crearCliente(@RequestBody ClienteDTO clienteDTO) {
-		return new ResponseEntity<>(this.manejadorCrearCliente.ejecutar(clienteDTO), HttpStatus.CREATED);
+	public ResponseEntity<HttpStatus> crearCliente(@RequestBody ClienteDTO clienteDTO) {
+		this.manejadorCrearCliente.ejecutar(clienteDTO);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/{id}")

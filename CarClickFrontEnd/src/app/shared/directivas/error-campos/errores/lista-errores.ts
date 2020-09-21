@@ -1,7 +1,7 @@
 import { InjectionToken } from '@angular/core';
 
 export const listaErrores = {
-  required: _ => `Dato <strong> obligatorio </strong>`,
+  required: _ => `Dato obligatorio`,
   min: ({ min }) => `Valor mínimo ${min}`,
   max: ({ max }) => `Valor máximo ${max}`,
   repetido: () => `Elemento repetido`,

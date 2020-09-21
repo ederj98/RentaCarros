@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import com.ceiba.adn.carclick.dominio.modelo.Reserva;
 import com.ceiba.adn.carclick.dominio.puerto.repositorio.RepositorioReserva;
-import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.CarroEntidad;
 import com.ceiba.adn.carclick.infraestructura.adaptador.repositorio.entidad.ReservaEntidad;
 import com.ceiba.adn.carclick.infraestructura.mapeador.MapeadorReservaEntidad;
 
@@ -16,11 +15,9 @@ import com.ceiba.adn.carclick.infraestructura.mapeador.MapeadorReservaEntidad;
 public class RepositorioReservaMySql implements RepositorioReserva {
 
 	private RepositorioReservaJPA reservaJPA;
-	private RepositorioCarroJPA carroJPA;
 	
-	public RepositorioReservaMySql(RepositorioReservaJPA reservaJPA, RepositorioCarroJPA carroJPA) {
+	public RepositorioReservaMySql(RepositorioReservaJPA reservaJPA) {
 		this.reservaJPA = reservaJPA;
-		this.carroJPA = carroJPA;
 	}
 
 	@Override
@@ -42,17 +39,7 @@ public class RepositorioReservaMySql implements RepositorioReserva {
 
 	@Override
 	public void actualizar(Reserva reserva) {
-		ReservaEntidad entidad = MapeadorReservaEntidad.mapearAEntidad(reserva);
-		Optional<ReservaEntidad> tempReserva = reservaJPA.findById(reserva.getId());
-		Optional<CarroEntidad> tempCarro = carroJPA.findById(reserva.getIdCarro());
-	
-		if (tempReserva.isPresent()) {
-			tempReserva.get().setFechaRecogida(reserva.getFechaRecogida());
-			if (tempCarro.isPresent()) {
-				tempReserva.get().setIdCarro(tempCarro.get());
-			}
-		}
-		
+		ReservaEntidad entidad = MapeadorReservaEntidad.mapearAEntidad(reserva);		
 		MapeadorReservaEntidad.mapearAModelo(reservaJPA.save(entidad));
 	}
 

@@ -10,11 +10,12 @@ import { Carro } from '../../../carro/shared/model/carro';
 
 @Component({
   selector: 'app-crear-reserva',
-  templateUrl: './crear-reserva.component.html',
-  styleUrls: ['./crear-reserva.component.css']
+  templateUrl: './crear-reserva.component.html'
 })
 export class CrearReservaComponent implements OnInit {
   reservaForm: FormGroup;
+  cabecera: string;
+  mensaje: string;
   public listaCarros: Observable<Carro[]>;
 
   constructor(
@@ -28,8 +29,13 @@ export class CrearReservaComponent implements OnInit {
   }
 
   crear() {
-    this.reservaServices.guardar(this.reservaForm.value);
-    this.irAtras();
+    this.reservaServices.guardar(this.reservaForm.value).subscribe(
+      response => {
+      console.log(response);
+      this.reservaForm.reset();
+      this.cabecera = 'Guardado exitoso!'
+      this.mensaje = 'Reserva creada exitosamente.'
+    });
   }
 
   irAtras(): void {

@@ -47,7 +47,7 @@ describe('CrearClienteComponent', () => {
     expect(component.clienteForm.valid).toBeFalsy();
   });
 
-  it('Registrando producto', () => {
+  it('Registrando cliente', () => {
     expect(component.clienteForm.valid).toBeFalsy();
     component.clienteForm.controls.idCliente.setValue(1125852412);
     component.clienteForm.controls.nombreCompleto.setValue('John Doe');
@@ -55,6 +55,6 @@ describe('CrearClienteComponent', () => {
     component.clienteForm.controls.telefono.setValue('3215241');
     component.clienteForm.controls.email.setValue('jd@gmail.com');
     expect(component.clienteForm.valid).toBeTruthy();
-    expect(component.guardar()).toBeTruthy();
+    expect(component.crear()).toBeTruthy();
   });
 });

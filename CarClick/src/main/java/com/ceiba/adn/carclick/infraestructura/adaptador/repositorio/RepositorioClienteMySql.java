@@ -19,9 +19,9 @@ public class RepositorioClienteMySql implements RepositorioCliente {
 	}
 
 	@Override
-	public Cliente crear(Cliente cliente) {
+	public void crear(Cliente cliente) {
 		ClienteEntidad entidad = MapeadorClienteEntidad.mapearAEntidad(cliente);
-		return MapeadorClienteEntidad.mapearAModelo(clienteJPA.save(entidad));
+		MapeadorClienteEntidad.mapearAModelo(clienteJPA.save(entidad));
 	}
 
 	@Override

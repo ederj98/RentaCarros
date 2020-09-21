@@ -50,10 +50,22 @@ export class HttpService {
     return this.http.get<T>(serviceUrl, ropts);
   }
 
+  public doGetWithParameter<T>(serviceUrl: string, param: number, opts?: Options): Observable<T> {
+    const ropts = this.createOptions(opts);
+    const url = `${serviceUrl}/${param}`;
+    return this.http.get<T>(url, ropts);
+  }
+
   public doPost<T, R>(serviceUrl: string, body: T, opts?: Options): Observable<R> {
     const ropts = this.createOptions(opts);
     
     return this.http.post<R>(serviceUrl, body, ropts);
+  }
+
+  public doPut<T, R>(serviceUrl: string, body: T, opts?: Options): Observable<R> {
+    const ropts = this.createOptions(opts);
+    
+    return this.http.put<R>(serviceUrl, body, ropts);
   }
 
   public doDelete<R>(serviceUrl: string, opts?: Options): Observable<R> {
