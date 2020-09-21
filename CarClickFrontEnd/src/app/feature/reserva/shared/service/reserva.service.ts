@@ -10,6 +10,10 @@ export class ReservaService {
 
   constructor(protected http: HttpService) {}
 
+  public consultarPorId(id: number) {
+    return this.http.doGetWithParameter<Reserva>(`${environment.endpoint}/reserva`, id, this.http.optsName('consultar reservas'));
+  }
+
   public consultarDetallePorId(id: number) {
     return this.http.doGetWithParameter<DetalleReserva>(`${environment.endpoint}/detalleReserva`, id, this.http.optsName('consultar reservas'));
   }
@@ -20,6 +24,11 @@ export class ReservaService {
 
   public guardar(reserva: Reserva) {
     return this.http.doPost<Reserva, Reserva>(`${environment.endpoint}/reserva`, reserva,
+                                                this.http.optsName('crear/actualizar reservas'));
+  }
+
+  public actualizar(reserva: Reserva) {
+    return this.http.doPut<Reserva, Reserva>(`${environment.endpoint}/reserva`, reserva,
                                                 this.http.optsName('crear/actualizar reservas'));
   }
 

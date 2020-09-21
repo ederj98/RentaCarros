@@ -35,6 +35,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class ControladorReservaTest {
 
 	private static final String URL_BASE = "http://localhost:8080/api/reserva";
+	private static final String GET_URL_BASE = "http://localhost:8080/api/reserva/{id}";
 
 	@Autowired
 	private ObjectMapper objectMapperTest;
@@ -151,5 +152,36 @@ public class ControladorReservaTest {
 				.content(objectMapperTest.writeValueAsString(reservaDTO)))
 				.andDo(print())
 				.andExpect(status().isCreated());
+	}
+	
+	@Test
+	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-reserva.sql")
+	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
+	public void cuandoPeticionConsultarReservaEntoncesDeberiaRetornarReserva() throws Exception {
+		// arrange 
+		final long idReserva = 1;
+		
+		// act - assert
+		mockMvc.perform(get(GET_URL_BASE, idReserva).
+				contentType(MediaType.APPLICATION_JSON).
+				accept(MediaType.APPLICATION_JSON))
+				.andDo(print())
+				.andExpect(jsonPath("$.*", hasSize(4)))
+				.andExpect(status().isOk());
+	}
+	
+	@Test
+	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-reserva.sql")
+	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
+	public void cuandoPeticionConsultarReservaNoExisteEntoncesDeberiaLanzarExcepcion() throws Exception {
+		// arrange 
+		final long idReserva = 10;
+
+		// act - assert
+		mockMvc.perform(get(GET_URL_BASE, idReserva)
+				.contentType(MediaType.APPLICATION_JSON)
+				.accept(MediaType.APPLICATION_JSON))
+				.andDo(print())
+				.andExpect(status().isNotFound());
 	}
 }

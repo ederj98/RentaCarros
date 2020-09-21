@@ -4,13 +4,14 @@
 <br/>
 <h5>Numero de reserva. </h5><p>{{ id }}</p>
 <div *ngIf="reserva">
-  <h5>Fecha de entrega. </h5><p>{{ reserva.fechaEntrega }}</p>
+  <h5>Fecha de entrega. </h5><p>{{ reserva.fechaEntrega | date:'medium' }}</p>
   <h5>Costo. </h5><p>{{ reserva.costo | currency }}</p>
 </div>
 <div class="alert alert-warning" *ngIf="!reserva">
   <p>La reserva se encuentra activa, para finalizar la reserva y calcular el costo del servicio haga clic en el botón "Confirmar entrega"</p>
   <hr>
-  <button class="btn btn-success" (click)="crear()">Confirmar entrega</button>
+  <button class="btn btn-success" (click)="crear()">Confirmar entrega</button>&nbsp;
+  <button class="btn btn-warning" routerLink="../../actualizar/{{id}}">Modificar</button>
 </div>
 <br/>
 <button class="btn btn-primary" (click)="irAtras()" >Volver</button>

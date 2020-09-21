@@ -43,3 +43,4 @@ export class DetalleReservaComponent implements OnInit {
     this.location.back();
   }
 }
+//date:'yyyy-MM-dd HH:mm:ss'

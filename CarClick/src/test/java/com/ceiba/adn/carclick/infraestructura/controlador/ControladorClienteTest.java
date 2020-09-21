@@ -2,6 +2,7 @@ package com.ceiba.adn.carclick.infraestructura.controlador;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -24,7 +25,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.ceiba.adn.carclick.CarClickApplication;
 import com.ceiba.adn.carclick.aplicacion.dto.ClienteDTO;
+import com.ceiba.adn.carclick.aplicacion.dto.ReservaDTO;
 import com.ceiba.adn.carclick.testdatabuilder.ClienteDTOTestDataBuilder;
+import com.ceiba.adn.carclick.testdatabuilder.ReservaDTOTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(SpringExtension.class)
@@ -93,5 +96,50 @@ public class ControladorClienteTest {
 				.andDo(print())
 				.andExpect(jsonPath("$.*", hasSize(5)))
 				.andExpect(status().isOk());
+	}
+	
+	@Test
+	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-cliente.sql")
+	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
+	public void cuandoPeticionConsultarClienteNoExisteEntoncesDeberiaLanzarExcepcion() throws Exception {
+		// arrange 
+		final long idCliente = 1258787555;
+
+		// act - assert
+		mockMvc.perform(get(GET_URL_BASE, idCliente)
+				.contentType(MediaType.APPLICATION_JSON)
+				.accept(MediaType.APPLICATION_JSON))
+				.andDo(print())
+				.andExpect(status().isNotFound());
+	}
+	
+	@Test
+	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-cliente.sql")
+	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
+	public void cuandoPeticionActualizarClienteNoExisteEntoncesDeberiaLanzarExcepcion() throws Exception {
+		// arrange
+		ClienteDTO clienteDTO = new ClienteDTOTestDataBuilder().conIdCliente(1112587799).build();
+
+		// act - assert
+		mockMvc.perform(put(URL_BASE)
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapperTest.writeValueAsString(clienteDTO)))
+				.andDo(print())
+				.andExpect(status().isNotFound());
+	}
+		
+	@Test
+	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-cliente.sql")
+	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
+	public void cuandoPeticionActualizarClienteExisteEntoncesDeberiaActualizar() throws Exception {
+		// arrange
+		ClienteDTO clienteDTO = new ClienteDTOTestDataBuilder().conIdCliente(1123321432).build();
+
+		// act - assert
+		mockMvc.perform(put(URL_BASE)
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapperTest.writeValueAsString(clienteDTO)))
+				.andDo(print())
+				.andExpect(status().isCreated());
 	}
 }

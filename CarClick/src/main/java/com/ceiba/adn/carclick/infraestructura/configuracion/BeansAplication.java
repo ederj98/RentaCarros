@@ -3,6 +3,7 @@ package com.ceiba.adn.carclick.infraestructura.configuracion;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.ceiba.adn.carclick.aplicacion.manejador.ManejadorActualizarCliente;
 import com.ceiba.adn.carclick.aplicacion.manejador.ManejadorActualizarReserva;
 import com.ceiba.adn.carclick.aplicacion.manejador.ManejadorCrearCarro;
 import com.ceiba.adn.carclick.aplicacion.manejador.ManejadorCrearCliente;
@@ -16,6 +17,7 @@ import com.ceiba.adn.carclick.dominio.puerto.repositorio.RepositorioCarro;
 import com.ceiba.adn.carclick.dominio.puerto.repositorio.RepositorioCliente;
 import com.ceiba.adn.carclick.dominio.puerto.repositorio.RepositorioDetalleReserva;
 import com.ceiba.adn.carclick.dominio.puerto.repositorio.RepositorioReserva;
+import com.ceiba.adn.carclick.dominio.servicio.ServicioActualizarCliente;
 import com.ceiba.adn.carclick.dominio.servicio.ServicioActualizarReserva;
 import com.ceiba.adn.carclick.dominio.servicio.ServicioCrearCarro;
 import com.ceiba.adn.carclick.dominio.servicio.ServicioCrearCliente;
@@ -47,6 +49,16 @@ public class BeansAplication {
 	@Bean
 	public ServicioListarCliente servicioListarCliente(final RepositorioCliente repositorioCliente) {
 		return new ServicioListarCliente(repositorioCliente);
+	}
+	
+	@Bean
+	public ManejadorActualizarCliente manejadorActualizarCliente(final ServicioActualizarCliente servicioActualizarCliente) {
+		return new ManejadorActualizarCliente(servicioActualizarCliente);
+	}
+	
+	@Bean
+	public ServicioActualizarCliente servicioActualizarCliente(final RepositorioCliente repositorioCliente) {
+		return new ServicioActualizarCliente(repositorioCliente);	
 	}
 	
 	@Bean

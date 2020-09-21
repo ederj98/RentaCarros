@@ -7,6 +7,7 @@ import { DetalleReservaComponent } from './components/detalle-reserva/detalle-re
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { SharedModule } from '@shared/shared.module';
 import { ReservaService } from './shared/service/reserva.service';
+import { ActualizarReservaComponent } from './components/actualizar-reserva/actualizar-reserva.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { ReservaService } from './shared/service/reserva.service';
     CrearReservaComponent,
     ListarReservaComponent,
     DetalleReservaComponent,
+    ActualizarReservaComponent,
     ReservaComponent
   ],
   imports: [

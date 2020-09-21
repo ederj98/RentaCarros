@@ -94,7 +94,7 @@ public class ControladorDetalleReservaTest {
 	@Test
 	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-detalle-reserva.sql")
 	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
-	public void cuandoPeticionConsultarClienteEntoncesDeberiaRetornarCliente() throws Exception {
+	public void cuandoPeticionConsultarDetalleReservaEntoncesDeberiaRetornarDetalleReserva() throws Exception {
 		// arrange 
 		final long idReserva = 1;
 		
@@ -105,5 +105,20 @@ public class ControladorDetalleReservaTest {
 				.andDo(print())
 				.andExpect(jsonPath("$.*", hasSize(4)))
 				.andExpect(status().isOk());
+	}
+	
+	@Test
+	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-detalle-reserva.sql")
+	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
+	public void cuandoPeticionConsultarDetalleReservaNoExisteEntoncesDeberiaLanzarExcepcion() throws Exception {
+		// arrange 
+		final long idReserva = 10;
+
+		// act - assert
+		mockMvc.perform(get(GET_URL_BASE, idReserva)
+				.contentType(MediaType.APPLICATION_JSON)
+				.accept(MediaType.APPLICATION_JSON))
+				.andDo(print())
+				.andExpect(status().isNotFound());
 	}
 }
