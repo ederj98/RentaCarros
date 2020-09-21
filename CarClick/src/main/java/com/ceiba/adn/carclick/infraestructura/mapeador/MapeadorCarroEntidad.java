@@ -31,7 +31,7 @@ public final class MapeadorCarroEntidad {
 		if (Objects.isNull(carro)) {
 			return null;
 		}
-		return new CarroEntidad(carro.getId(), carro.getModelo(), carro.getTipoCambios(), carro.getNumPasajeros(), 
-				carro.getNumPuertas(), carro.getTipoCombustible());
+		return new CarroEntidad(carro.getId(), carro.getNumPuertas(), carro.getModelo(), carro.getNumPasajeros(), 
+				carro.getTipoCombustible(), carro.getTipoCambios());
 	}
 }

@@ -71,7 +71,7 @@ public final class Alquiler {
 				horasNocturnas++;
 			} else if(!diaRecogida &&
 					!esEntregaMismoDia(reserva.getFechaRecogida().toLocalDate(), fechaEntrega.toLocalDate())) {
-				horasNocturnas = Duration.between(LocalTime.of(00, 0), LocalTime.of(07, 0)).toHours();
+				horasNocturnas = Duration.between(LocalTime.of(0, 0), LocalTime.of(7, 0)).toHours();
 				
 			}
 			

@@ -9,8 +9,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "CARRO")
 public class CarroEntidad {
-		
-	
 	
 	@Id
 	@GeneratedValue
@@ -62,12 +60,12 @@ public class CarroEntidad {
 
 	public CarroEntidad() {}
 	
-	public CarroEntidad(long id, String modelo, String tipoCambios, int numPasajeros, int numPuertas, String tipoCombustible) {
+	public CarroEntidad(long id, int numPuertas, String modelo, int numPasajeros, String tipoCombustible, String tipoCambios) {
 		this.id = id;
-		this.modelo = modelo;
-		this.tipoCambios = tipoCambios;
-		this.numPasajeros = numPasajeros;
 		this.numPuertas = numPuertas;
+		this.modelo = modelo;
+		this.numPasajeros = numPasajeros;
 		this.tipoCombustible = tipoCombustible;
+		this.tipoCambios = tipoCambios;
 	}
 }

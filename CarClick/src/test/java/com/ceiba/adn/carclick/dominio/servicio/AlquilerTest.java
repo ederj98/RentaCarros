@@ -54,6 +54,19 @@ public class AlquilerTest {
 	}
 	
 	@Test
+	public void calcularCostoEntregaSegundoDiaContadorDias() {
+		//Arrange
+		Reserva reservaTestBuilder = new ReservaTestDataBuilder().conFechaRecogida(LocalDateTime.of(2020, 9, 10, 19, 0)).build();
+		LocalDateTime fechaEntrega = LocalDateTime.of(2020, 9, 11, 9, 0);
+		
+		//Act
+		BigDecimal costoReserva = Alquiler.calcularCosto(reservaTestBuilder, fechaEntrega);
+		
+		//Assert
+		assertEquals(costoReserva, BigDecimal.valueOf(218250.0));	
+	}
+	
+	@Test
 	public void calcularCostoVariosDias() {
 		//Arrange
 		Reserva reservaTestBuilder = new ReservaTestDataBuilder().build();
