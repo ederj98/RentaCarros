@@ -31,7 +31,7 @@ public class CarroEntidadTestDataBuilder {
 	}
 	
 	public CarroEntidad build() {
-		return new CarroEntidad(id, modelo, tipoCambios, numPasajeros, numPuertas, tipoCombustible);
+		return new CarroEntidad(id, numPuertas, modelo, numPasajeros, tipoCombustible, tipoCambios);
 	}
 	
 	public CarroEntidadTestDataBuilder conId(long id) {
