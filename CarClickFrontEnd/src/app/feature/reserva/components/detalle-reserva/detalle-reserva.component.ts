@@ -7,8 +7,7 @@ import { DetalleReserva } from '../../shared/model/detalle-reserva';
 
 @Component({
   selector: 'app-detalle-reserva',
-  templateUrl: './detalle-reserva.component.html',
-  styleUrls: ['./detalle-reserva.component.css']
+  templateUrl: './detalle-reserva.component.html'
 })
 export class DetalleReservaComponent implements OnInit {
   id: number;

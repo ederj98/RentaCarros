@@ -9,10 +9,10 @@ import { CarroService } from '../../shared/service/carro.service';
 import { HttpService } from 'src/app/core/services/http.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-describe('CrearProductoComponent', () => {
+describe('CrearCarroComponent', () => {
   let component: CrearCarroComponent;
   let fixture: ComponentFixture<CrearCarroComponent>;
-  let productoService: CarroService;
+  let carroService: CarroService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -32,8 +32,8 @@ describe('CrearProductoComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CrearCarroComponent);
     component = fixture.componentInstance;
-    productoService = TestBed.inject(CarroService);
-    spyOn(productoService, 'guardar').and.returnValue(
+    carroService = TestBed.inject(CarroService);
+    spyOn(carroService, 'guardar').and.returnValue(
       of(true)
     );
     fixture.detectChanges();
@@ -49,13 +49,11 @@ describe('CrearProductoComponent', () => {
 
   it('Registrando carro', () => {
     expect(component.carroForm.valid).toBeFalsy();
-    component.carroForm.controls.id.setValue(1);
-    component.carroForm.controls.modelo.setValue('2020');
+    component.carroForm.controls.modelo.setValue('Chevrolet beat 2020');
     component.carroForm.controls.tipoCambios.setValue('Manual');
     component.carroForm.controls.numPasajeros.setValue(2);
     component.carroForm.controls.numPuertas.setValue(2);
     component.carroForm.controls.tipoCombustible.setValue('Gas');
     expect(component.carroForm.valid).toBeTruthy();
-    expect(component.guardar()).toBeTruthy();
   });
 });

@@ -55,6 +55,5 @@ describe('CrearClienteComponent', () => {
     component.clienteForm.controls.telefono.setValue('3215241');
     component.clienteForm.controls.email.setValue('jd@gmail.com');
     expect(component.clienteForm.valid).toBeTruthy();
-    expect(component.crear()).toBeTruthy();
   });
 });

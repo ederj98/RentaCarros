@@ -1,17 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductoComponent } from './producto.component';
+import { ClienteComponent } from './cliente.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 
-describe('ProductoComponent', () => {
-  let component: ProductoComponent;
-  let fixture: ComponentFixture<ProductoComponent>;
+describe('ClienteComponent', () => {
+  let component: ClienteComponent;
+  let fixture: ComponentFixture<ClienteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductoComponent ],
+      declarations: [ ClienteComponent ],
       imports: [
         CommonModule,
         HttpClientModule,
@@ -22,7 +22,7 @@ describe('ProductoComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductoComponent);
+    fixture = TestBed.createComponent(ClienteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
