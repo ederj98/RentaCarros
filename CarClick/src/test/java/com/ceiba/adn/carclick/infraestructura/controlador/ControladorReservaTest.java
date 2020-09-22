@@ -74,7 +74,8 @@ public class ControladorReservaTest {
 	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
 	public void cuandoPeticionCrearReservaClienteNoExisteEntoncesDeberiaLanzarExcepcion() throws Exception {
 		// arrange
-		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder().conIdCliente(1223222333).build();
+		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder()
+				.conIdCliente(1223222333).conFechaRecogida(LocalDateTime.now().plusHours(2)).build();
 
 		// act - assert
 		mockMvc.perform(post(URL_BASE)
@@ -133,7 +134,8 @@ public class ControladorReservaTest {
 	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
 	public void cuandoPeticionActualizarReservaCarroNoExisteEntoncesDeberiaLanzarExcepcion() throws Exception {
 		// arrange
-		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder().conIdCarro(20).build();
+		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder()
+				.conIdCarro(20).conFechaRecogida(LocalDateTime.now().plusHours(2)).build();
 
 		// act - assert
 		mockMvc.perform(put(URL_BASE)
