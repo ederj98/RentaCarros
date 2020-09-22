@@ -18,7 +18,7 @@ public class ValidarFechasTest {
 	private static final String LA_FECHA_DE_RECOGIDA_DEL_VEHICULO_NO_PUEDE_SER_MENOR_A_LA_FECHA_ACTUAL = "La fecha de recogida del vehiculo no puede ser menor a la fecha actual";
 		
 	@Test
-	public void cuandoFechaRecogidaFueraHorarioServicioPorLaMañanaEntoncesDeberiaLanzarExcepcion() {
+	public void cuandoFechaRecogidaFueraHorarioServicioPorLaMananaEntoncesDeberiaLanzarExcepcion() {
 		// arrange
 		LocalDateTime fechaRecogida = LocalDateTime.of(2020, 9, 15, 7, 0);
 		
