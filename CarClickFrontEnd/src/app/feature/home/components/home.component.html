@@ -1,0 +1,9 @@
+<br/>
+<div class="container p-3 my-3 border">
+  <h2>{{ title }}</h2>
+  <p>{{ subtitle }}</p>
+  <hr>
+  <p *ngFor="let item of listaTRM | async">La TRM para el día de hoy es: {{ item.valor | currency }}</p>
+  <br/>
+  <button id="btnVerReservas" class="btn btn-primary" routerLink="/reserva/listar">Ver reservas</button>
+</div>

@@ -1,0 +1,11 @@
+<br/><br/>
+<div class="card-columns">
+  <a *ngFor="let item of listaReserva | async" routerLink="../detalle/{{item.id}}" id={{item.id}}>
+    <div class="card bg-light">
+      <div class="card-body text-center">
+        <p class="card-text"> Numero de reserva. {{item.id}}</p>
+        <p class="card-text">Fecha recogida. {{item.fechaRecogida | date:'medium'}}</p>
+      </div>
+    </div> 
+  </a> 
+</div>

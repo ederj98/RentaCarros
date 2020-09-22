@@ -1,0 +1,19 @@
+<h1>Actualizar Reserva</h1>
+<p>Digite los siguientes campos para actualizar una reserva.</p>
+<br/>
+<form [formGroup]="reservaForm" (ngSubmit)="actualizar()">
+  <div class="form-group">
+    <label for="idCarro">Vehiculo</label>
+    <select validar class="form-control" id="idCarro" formControlName="idCarro" >
+      <option *ngFor="let item of listaCarros | async" value= {{item.id}} >{{ item.modelo }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="fechaRecogida">Fecha recogida</label>
+    <input validar type="text" class="form-control" id="fechaRecogida" formControlName="fechaRecogida" placeholder="yyyy-MM-dd HH:mm:ss">
+  </div>
+  <button type="submit" [disabled]="reservaForm.invalid" class="btn btn-primary">Actualizar reserva</button>
+</form>
+<br/>
+<button class="btn btn-primary" (click)="irAtras()" >Volver</button>
+<br/>

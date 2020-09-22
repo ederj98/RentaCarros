@@ -1,0 +1,1 @@
+INSERT INTO Carro(id, modelo, num_pasajeros, num_puertas, tipo_cambios, tipo_combustible) VALUES (1, '2020', 2, 2, 'Manual', 'Gas');

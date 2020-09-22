@@ -1,0 +1,26 @@
+<form [formGroup]="clienteForm" (ngSubmit)="gestionar()">
+  <div class="form-group">
+    <label for="idCliente">Identificación</label>
+    <input validar #searchBox id="search-box" (input)="consultar(searchBox.value)" type="number" class="form-control" id="idCliente" formControlName="idCliente" >
+  </div>
+  <div class="form-group">
+    <label for="nombreCompleto">Nombre completo</label>
+    <input validar type="text" class="form-control" id="nombreCompleto" formControlName="nombreCompleto" >
+  </div>
+  <div class="form-group">
+    <label for="direccion">Dirección</label>
+    <input validar type="text" class="form-control" id="direccion" formControlName="direccion" >
+  </div>
+  <div class="form-group">
+    <label for="telefono">Telefono</label>
+    <input validar type="text" class="form-control" id="telefono" formControlName="telefono" >
+  </div>
+  <div class="form-group">
+    <label for="email">Correo electronico</label>
+    <input validar type="email" class="form-control" id="email" formControlName="email" placeholder="name@example.com" >
+  </div>
+  <button id="btnCliente" type="submit" [disabled]="clienteForm.invalid" class="btn btn-primary">{{ btnNombre }}</button>
+</form>
+<br/>
+<app-alert *ngIf="cabecera" [cabecera]="cabecera" [mensaje]="mensaje"></app-alert>
+<br/>
