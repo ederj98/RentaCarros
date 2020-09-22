@@ -159,6 +159,21 @@ public class ControladorReservaTest {
 	@Test
 	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-reserva.sql")
 	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
+	public void cuandoPeticionActualizarReservaNoExisteEntoncesDeberiaLanzarExcepcion() throws Exception {
+		// arrange
+		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder().conId(200).build();
+
+		// act - assert
+		mockMvc.perform(put(URL_BASE)
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapperTest.writeValueAsString(reservaDTO)))
+				.andDo(print())
+				.andExpect(status().isNotFound());
+	}
+	
+	@Test
+	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = "/scripts/crear-reserva.sql")
+	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
 	public void cuandoPeticionConsultarReservaEntoncesDeberiaRetornarReserva() throws Exception {
 		// arrange 
 		final long idReserva = 1;
