@@ -19,6 +19,7 @@ public final class Alquiler {
 	private static final int NUM_HORAS_MAX_RECARGO_NOCTURNO = 11;
 	private static final int NUM_DIAS_RECOGIDA_ENTREGA = 2;
 	private static final int CERO = 0;
+	private static final int MIN_NUM_HORAS = 1;
 
 	private Alquiler() {
 		throw new AssertionError(ESTA_CLASE_NO_DEBE_SER_INSTANCIADA);
@@ -42,7 +43,7 @@ public final class Alquiler {
 			costoReserva = calcularRecargoPorDiaRecogidaEntrega(reserva, fechaEntrega, (horas + 1), true);
 		}
 		
-		costoReserva = costoReserva.add(BigDecimal.valueOf(totalHoras * TARIFA_ESTANDAR_POR_HORA).add(
+		costoReserva = costoReserva.add(BigDecimal.valueOf((totalHoras <= 0 ? MIN_NUM_HORAS : totalHoras) * TARIFA_ESTANDAR_POR_HORA).add(
 				calcularRecargoVariosDias(reserva, fechaEntrega, totalHoras)));
 		
 		return costoReserva;

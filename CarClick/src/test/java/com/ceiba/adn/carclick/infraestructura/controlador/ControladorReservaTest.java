@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -116,7 +117,8 @@ public class ControladorReservaTest {
 	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
 	public void cuandoPeticionActualizarReservaClienteNoExisteEntoncesDeberiaLanzarExcepcion() throws Exception {
 		// arrange
-		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder().conIdCliente(1112587790).build();
+		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder()
+				.conIdCliente(1112587790).conFechaRecogida(LocalDateTime.now().plusHours(2)).build();
 
 		// act - assert
 		mockMvc.perform(put(URL_BASE)
@@ -146,8 +148,9 @@ public class ControladorReservaTest {
 	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
 	public void cuandoPeticionActualizarReservaClienteExisteCarroExisteEntoncesDeberiaActualizar() throws Exception {
 		// arrange
-		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder().conIdCarro(2).build();
-
+		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder()
+				.conIdCarro(2).conFechaRecogida(LocalDateTime.now().plusHours(2)).build();
+		
 		// act - assert
 		mockMvc.perform(put(URL_BASE)
 				.contentType(MediaType.APPLICATION_JSON)
@@ -161,7 +164,8 @@ public class ControladorReservaTest {
 	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
 	public void cuandoPeticionActualizarReservaNoExisteEntoncesDeberiaLanzarExcepcion() throws Exception {
 		// arrange
-		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder().conId(200).build();
+		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder()
+				.conId(200).conFechaRecogida(LocalDateTime.now().plusHours(2)).build();
 
 		// act - assert
 		mockMvc.perform(put(URL_BASE)

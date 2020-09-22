@@ -1,5 +1,7 @@
 package com.ceiba.adn.carclick.dominio.servicio;
 
+import java.time.LocalDateTime;
+
 import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionCarroNoRegistrado;
 import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionClienteNoRegistrado;
 import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionReservaNoRegistrada;
@@ -24,6 +26,7 @@ public class ServicioActualizarReserva {
 	}
 	
 	public void actualizarReserva(Reserva reserva) {
+		ValidarFechas.validarFechaRecogidaPosteriorAFechaActual(reserva.getFechaRecogida(), LocalDateTime.now());
 		ValidarFechas.validarFechaFueraHorarioServicio(reserva.getFechaRecogida());
 		validarRegistroPrevioReserva(reserva.getId());
 		validarRegistroPrevioCarro(reserva.getIdCarro());

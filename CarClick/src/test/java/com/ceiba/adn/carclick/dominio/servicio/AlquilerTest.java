@@ -26,6 +26,19 @@ public class AlquilerTest {
 	}
 	
 	@Test
+	public void cuandoEntregaMismoDiaMenosDeUnaHoraEntoncesDeberiaCalcularSinRecargosTarifaMinima() {
+		//Arrange
+		Reserva reservaTestBuilder = new ReservaTestDataBuilder().build();
+		LocalDateTime fechaEntrega = LocalDateTime.of(2020, 9, 10, 9, 5);
+		
+		//Act
+		BigDecimal costoReserva = Alquiler.calcularCosto(reservaTestBuilder, fechaEntrega);
+		
+		//Assert
+		assertEquals(costoReserva, new BigDecimal(15000));		
+	}
+	
+	@Test
 	public void cuandoEntregaMismoDiaFestivoEntoncesDeberiaCalcularRecargosFinSemana() {
 		//Arrange
 		LocalDateTime fechaRecogida = LocalDateTime.of(2020, 9, 13, 9, 0);
