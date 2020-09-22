@@ -11,7 +11,7 @@ public class ValidarCamposTest {
 	private static final String DEBE_INGRESAR_LOS_CAMPOS_REQUERIDOS = "Debe ingresar los campos requeridos";
 	
 	@Test
-	public void campoVacio() {
+	public void cuandoCampoVacioEntoncesDeberiaLanzarExcepcion() {
 		// arrange
 		String campoVacio = null;
 

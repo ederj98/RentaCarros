@@ -14,7 +14,7 @@ import com.ceiba.adn.carclick.testdatabuilder.ClienteTestDataBuilder;
 public class MapeadorClienteEntidadTest {
 
 	@Test
-	public void clienteEntidadNullRetornaNull() {
+	public void cuandoClienteEntidadNullEntoncesDeberiaRetornarNull() {
 		// arrange
 		ClienteEntidad clienteEntidad = null;
 
@@ -26,7 +26,7 @@ public class MapeadorClienteEntidadTest {
 	}
 
 	@Test
-	public void clienteEntidadNoNullRetornaCliente() {
+	public void cuandoClienteEntidadNoNullEntoncesDeberiaRetornarCliente() {
 		// arrange
 		ClienteEntidad clienteEntidad = new ClienteEntidadTestDataBuilder().build();
 
@@ -43,7 +43,7 @@ public class MapeadorClienteEntidadTest {
 	}
 
 	@Test
-	public void clienteNullRetornaNull() {
+	public void cuandoClienteNullEntoncesDeberiaRetornarNull() {
 		// arrange
 		Cliente cliente = null;
 
@@ -55,7 +55,7 @@ public class MapeadorClienteEntidadTest {
 	}
 
 	@Test
-	public void clienteNoNullRetornaClienteEntidad() {
+	public void cuandoClienteNoNullEntoncesDeberiaRetornarClienteEntidad() {
 		// arrange
 		Cliente cliente = new ClienteTestDataBuilder().build();
 

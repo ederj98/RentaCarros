@@ -13,7 +13,7 @@ import com.ceiba.adn.carclick.testdatabuilder.CarroTestDataBuilder;
 public class MapeadorCarroTest {
 
 	@Test
-	public void carroDTONullRetornaNull() {
+	public void cuandoCarroDTONullEntoncesDeberiaRetornarNull() {
 		// arrange
 		CarroDTO carroDTO = null;
 
@@ -25,7 +25,7 @@ public class MapeadorCarroTest {
 	}
 
 	@Test
-	public void carroDTONoNullRetornaCarro() {
+	public void cuandoCarroDTONoNullEntoncesDeberiaRetornarCarro() {
 		// arrange
 		CarroDTO carroDTO = new CarroDTOTestDataBuilder().build();
 
@@ -43,7 +43,7 @@ public class MapeadorCarroTest {
 	}
 
 	@Test
-	public void carroNullRetornaNull() {
+	public void cuandoCarroNullEntoncesDeberiaRetornarNull() {
 		// arrange
 		Carro carro = null;
 
@@ -55,7 +55,7 @@ public class MapeadorCarroTest {
 	}
 
 	@Test
-	public void carroNoNullRetornaCarroDTO() {
+	public void cuandoCarroNoNullEntoncesDeberiaRetornarCarroDTO() {
 		// arrange
 		Carro carro = new CarroTestDataBuilder().build();
 

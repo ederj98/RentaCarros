@@ -8,6 +8,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -56,7 +58,7 @@ public class ControladorReservaTest {
 	@Sql(executionPhase = ExecutionPhase.AFTER_TEST_METHOD, scripts = "/scripts/limpiar-data.sql")
 	public void cuandoPeticionCrearReservaNoExisteEntoncesDeberiaCrear() throws Exception {
 		// arrange
-		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder().build();
+		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder().conFechaRecogida(LocalDate.now().plusDays(1).atTime(9, 0)).build();
 
 		// act - assert
 		mockMvc.perform(post(URL_BASE)

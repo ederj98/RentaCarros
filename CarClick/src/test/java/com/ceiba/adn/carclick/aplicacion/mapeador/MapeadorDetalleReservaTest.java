@@ -14,7 +14,7 @@ import com.ceiba.adn.carclick.testdatabuilder.DetalleReservaTestDataBuilder;
 public class MapeadorDetalleReservaTest {
 
 	@Test
-	public void detalleReservaDTONullRetornaNull() {
+	public void cuandoDetalleReservaDTONullEntoncesDeberiaRetornarNull() {
 		// arrange
 		DetalleReservaDTO detalleReservaDTO = null;
 
@@ -26,7 +26,7 @@ public class MapeadorDetalleReservaTest {
 	}
 
 	@Test
-	public void detalleReservaDTONoNullRetornaReserva() {
+	public void cuandoDetalleReservaDTONoNullEntoncesDeberiaRetornarReserva() {
 		// arrange
 		DetalleReservaDTO detalleReservaDTO = new DetalleReservaDTOTestDataBuilder().build();
 
@@ -42,7 +42,7 @@ public class MapeadorDetalleReservaTest {
 	}
 
 	@Test
-	public void detalleReservaNullRetornaNull() {
+	public void cuandoDetalleReservaNullEntoncesDeberiaRetornarNull() {
 		// arrange
 		DetalleReserva detalleReserva = null;
 
@@ -54,7 +54,7 @@ public class MapeadorDetalleReservaTest {
 	}
 
 	@Test
-	public void detalleReservaNoNullRetornaDetalleReservaDTO() {
+	public void cuandoDetalleReservaNoNullEntoncesDeberiaRetornarDetalleReservaDTO() {
 		// arrange
 		DetalleReserva detalleReserva = new DetalleReservaTestDataBuilder().build();
 

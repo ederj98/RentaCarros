@@ -24,6 +24,7 @@ public class ServicioActualizarReserva {
 	}
 	
 	public void actualizarReserva(Reserva reserva) {
+		ValidarFechas.validarFechaFueraHorarioServicio(reserva.getFechaRecogida());
 		validarRegistroPrevioReserva(reserva.getId());
 		validarRegistroPrevioCarro(reserva.getIdCarro());
 		validarRegistroPrevioCliente(reserva.getIdCliente());

@@ -13,7 +13,7 @@ import com.ceiba.adn.carclick.testdatabuilder.ReservaTestDataBuilder;
 public class AlquilerTest {
 
 	@Test
-	public void calcularCostoEntregaMismoDia() {
+	public void cuandoEntregaMismoDiaEntoncesDeberiaCalcularSinRecargos() {
 		//Arrange
 		Reserva reservaTestBuilder = new ReservaTestDataBuilder().build();
 		LocalDateTime fechaEntrega = LocalDateTime.of(2020, 9, 10, 14, 0);
@@ -26,7 +26,7 @@ public class AlquilerTest {
 	}
 	
 	@Test
-	public void calcularCostoEntregaMismoDiaFestivo() {
+	public void cuandoEntregaMismoDiaFestivoEntoncesDeberiaCalcularRecargosFinSemana() {
 		//Arrange
 		LocalDateTime fechaRecogida = LocalDateTime.of(2020, 9, 13, 9, 0);
 		Reserva reservaTestBuilder = new ReservaTestDataBuilder().conFechaRecogida(fechaRecogida)
@@ -41,7 +41,7 @@ public class AlquilerTest {
 	}
 	
 	@Test
-	public void calcularCostoEntregaSegundoDia() {
+	public void cuandoEntregaSegundoDiaEntoncesDeberiaCalcularConRecargosNocturnos() {
 		//Arrange
 		Reserva reservaTestBuilder = new ReservaTestDataBuilder().build();
 		LocalDateTime fechaEntrega = LocalDateTime.of(2020, 9, 11, 14, 0);
@@ -54,7 +54,7 @@ public class AlquilerTest {
 	}
 	
 	@Test
-	public void calcularCostoEntregaSegundoDiaContadorDias() {
+	public void cuandoEntregaSegundoDiaEntoncesDeberiaCalcularConContadorDias() {
 		//Arrange
 		Reserva reservaTestBuilder = new ReservaTestDataBuilder().conFechaRecogida(LocalDateTime.of(2020, 9, 10, 19, 0)).build();
 		LocalDateTime fechaEntrega = LocalDateTime.of(2020, 9, 11, 9, 0);
@@ -67,7 +67,7 @@ public class AlquilerTest {
 	}
 	
 	@Test
-	public void calcularCostoVariosDias() {
+	public void cuandoEntregaVariosDiasIncluyendoFinSemanaEntoncesDeberiaCalcularConRecargosNocturnosFestivos() {
 		//Arrange
 		Reserva reservaTestBuilder = new ReservaTestDataBuilder().build();
 		LocalDateTime fechaEntrega = LocalDateTime.of(2020, 9, 15, 14, 0);

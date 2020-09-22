@@ -26,6 +26,7 @@ public class ServicioCrearDetalleReserva {
 				});
 		
 		detalleReserva.setFechaEntrega(LocalDateTime.now());
+		ValidarFechas.validarFechaRecogidaAnteriorAFechaEntrega(reserva.getFechaRecogida(), detalleReserva.getFechaEntrega());
 		ValidarFechas.validarFechaFueraHorarioServicio(detalleReserva.getFechaEntrega());
 		ValidarCampos.esVacio(detalleReserva.getIdReserva());
 		detalleReserva.setCosto(Alquiler.calcularCosto(reserva, detalleReserva.getFechaEntrega()));

@@ -25,5 +25,4 @@ public interface RepositorioCarro {
 	 * @return
 	 */
 	public List<Carro> listar();
-
 }

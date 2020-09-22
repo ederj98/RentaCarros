@@ -7,7 +7,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionCarroNoRegistrado;
 import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionClienteNoRegistrado;
 import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionDuplicidad;
+import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionFechaEntregaMenorFechaRecogida;
 import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionFechaFueraHorarioServicio;
+import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionFechaRecogidaAnteriorAFechaActual;
 import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionReservaNoRegistrada;
 import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionValidarCampo;
 
@@ -29,6 +31,8 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
         CODIGOS_ESTADO.put(ExcepcionFechaFueraHorarioServicio.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         CODIGOS_ESTADO.put(ExcepcionReservaNoRegistrada.class.getSimpleName(), HttpStatus.NOT_FOUND.value());
         CODIGOS_ESTADO.put(ExcepcionValidarCampo.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
+        CODIGOS_ESTADO.put(ExcepcionFechaEntregaMenorFechaRecogida.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
+        CODIGOS_ESTADO.put(ExcepcionFechaRecogidaAnteriorAFechaActual.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
         //en caso de tener otra excepcion matricularla aca
     }
 

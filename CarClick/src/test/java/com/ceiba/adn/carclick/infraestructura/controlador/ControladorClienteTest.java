@@ -25,9 +25,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.ceiba.adn.carclick.CarClickApplication;
 import com.ceiba.adn.carclick.aplicacion.dto.ClienteDTO;
-import com.ceiba.adn.carclick.aplicacion.dto.ReservaDTO;
 import com.ceiba.adn.carclick.testdatabuilder.ClienteDTOTestDataBuilder;
-import com.ceiba.adn.carclick.testdatabuilder.ReservaDTOTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(SpringExtension.class)

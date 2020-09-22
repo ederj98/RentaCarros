@@ -29,6 +29,7 @@ export class CrearClienteComponent implements OnInit {
       this.clienteForm.get('direccion').setValue(response.direccion);
       this.clienteForm.get('telefono').setValue(response.telefono);
       this.clienteForm.get('email').setValue(response.email);
+      this.clienteForm.get('idCliente').disable();
       this.btnNombre = 'Actualizar cliente';
       },
       error => {
@@ -47,6 +48,7 @@ export class CrearClienteComponent implements OnInit {
         this.mensaje = 'Cliente creado exitosamente.'
       });
     } else {
+      this.clienteForm.get('idCliente').enable();
       this.clienteService.actualizar(this.clienteForm.value).subscribe(
         response => {
         console.log(response);
