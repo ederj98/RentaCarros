@@ -16,7 +16,7 @@
     <label for="fechaRecogida">Fecha recogida</label>
     <input validar type="text" class="form-control" id="fechaRecogida" formControlName="fechaRecogida" placeholder="yyyy-MM-dd HH:mm:ss">
   </div>
-  <button type="submit" [disabled]="reservaForm.invalid" class="btn btn-primary">Crear reserva</button>
+  <button id="btnReserva" type="submit" [disabled]="reservaForm.invalid" class="btn btn-primary">Crear reserva</button>
 </form>
 <br/>
 <app-alert *ngIf="cabecera" [cabecera]="cabecera" [mensaje]="mensaje"></app-alert>

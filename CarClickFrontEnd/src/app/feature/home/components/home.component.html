@@ -5,5 +5,5 @@
   <hr>
   <p *ngFor="let item of listaTRM | async">La TRM para el día de hoy es: {{ item.valor | currency }}</p>
   <br/>
-  <button class="btn btn-primary" routerLink="/reserva/listar">Ver reservas</button>
+  <button id="btnVerReservas" class="btn btn-primary" routerLink="/reserva/listar">Ver reservas</button>
 </div>

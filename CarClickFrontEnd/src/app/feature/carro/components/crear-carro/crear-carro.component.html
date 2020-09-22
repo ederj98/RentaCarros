@@ -26,7 +26,7 @@
       <option>Electrico</option>
     </select>
   </div>
-  <button type="submit" [disabled]="carroForm.invalid" class="btn btn-primary">Guardar carro</button>
+  <button id="btnCarro" type="submit" [disabled]="carroForm.invalid" class="btn btn-primary">Guardar carro</button>
 </form>
 <br/>
 <app-alert *ngIf="cabecera" [cabecera]="cabecera" [mensaje]="mensaje"></app-alert>

@@ -19,7 +19,7 @@
     <label for="email">Correo electronico</label>
     <input validar type="email" class="form-control" id="email" formControlName="email" placeholder="name@example.com" >
   </div>
-  <button type="submit" [disabled]="clienteForm.invalid" class="btn btn-primary">{{ btnNombre }}</button>
+  <button id="btnCliente" type="submit" [disabled]="clienteForm.invalid" class="btn btn-primary">{{ btnNombre }}</button>
 </form>
 <br/>
 <app-alert *ngIf="cabecera" [cabecera]="cabecera" [mensaje]="mensaje"></app-alert>
