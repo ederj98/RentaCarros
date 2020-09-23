@@ -11,7 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
+@Getter @Setter @NoArgsConstructor
 @Table(name = "RESERVA")
 public class ReservaEntidad {
 		
@@ -41,37 +46,5 @@ public class ReservaEntidad {
 		this.idCliente = idCliente;
 		this.idCarro = idCarro;
 		this.fechaRecogida = fechaRecogida;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public ClienteEntidad getIdCliente() {
-		return idCliente;
-	}
-
-	public CarroEntidad getIdCarro() {
-		return idCarro;
-	}
-
-	public LocalDateTime getFechaRecogida() {
-		return fechaRecogida;
-	}
-	
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public void setIdCarro(CarroEntidad idCarro) {
-		this.idCarro = idCarro;
-	}
-
-	public void setFechaRecogida(LocalDateTime fechaRecogida) {
-		this.fechaRecogida = fechaRecogida;
-	}
-
-	public void setDetalleReserva(DetalleReservaEntidad detalleReserva) {
-		this.detalleReserva = detalleReserva;
 	}
 }

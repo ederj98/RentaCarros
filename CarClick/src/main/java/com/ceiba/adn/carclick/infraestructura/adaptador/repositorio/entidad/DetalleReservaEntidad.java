@@ -12,8 +12,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 
 @Entity
+@Getter @NoArgsConstructor
 @Table(name = "DETALLE_RESERVA")
 public class DetalleReservaEntidad {
 	
@@ -39,21 +43,5 @@ public class DetalleReservaEntidad {
 		this.reserva = reserva;
 		this.fechaEntrega = fechaEntrega;
 		this.costo = costo;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public ReservaEntidad getReserva() {
-		return reserva;
-	}
-
-	public LocalDateTime getFechaEntrega() {
-		return fechaEntrega;
-	}
-
-	public BigDecimal getCosto() {
-		return costo;
 	}
 }

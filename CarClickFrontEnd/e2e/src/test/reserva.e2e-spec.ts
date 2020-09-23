@@ -17,7 +17,7 @@ describe('workspace-project Reserva', () => {
     it('Cuando se ingresan los datos de la reserva, deberia crearse una reserva', () => {
         const ID_CLIENTE = 1102860900;
         const ID_CARRO = 'Chevrolet beat 2020';
-        const FECHA_RECOGIDA = '2020-09-22 14:00:00';
+        const FECHA_RECOGIDA = '2020-09-25 14:00:00';
 
         page.navigateTo();
         navBar.clickBotonReserva();
@@ -33,7 +33,7 @@ describe('workspace-project Reserva', () => {
     it('Cuando el cliente no se encuentra registrado, entonces deberia lanzar una alerta', () => {
         const ID_CLIENTE = 1203589741;
         const ID_CARRO = 'Chevrolet beat 2020';
-        const FECHA_RECOGIDA = '2020-09-22 14:00:00';
+        const FECHA_RECOGIDA = '2020-09-25 14:00:00';
 
         page.navigateTo();
         navBar.clickBotonReserva();
