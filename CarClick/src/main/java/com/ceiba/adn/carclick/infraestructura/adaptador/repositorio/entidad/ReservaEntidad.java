@@ -11,30 +11,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+
 @Entity
+@Getter
 @Table(name = "RESERVA")
 public class ReservaEntidad {
 		
-	public long getId() {
-		return id;
-	}
-
-	public ClienteEntidad getIdCliente() {
-		return idCliente;
-	}
-
-	public CarroEntidad getIdCarro() {
-		return idCarro;
-	}
-
-	public LocalDateTime getFechaRecogida() {
-		return fechaRecogida;
-	}
-
-	public DetalleReservaEntidad getDetalleReserva() {
-		return detalleReserva;
-	}
-
 	@Id
 	@GeneratedValue
 	@Column(name = "ID")

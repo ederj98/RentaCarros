@@ -13,13 +13,7 @@ public interface RepositorioReserva {
 	 * @return
 	 */
 	public void crear(Reserva reserva);
-	
-	/**
-	 * Metodo encargado de la actualizar una Reserva
-	 * @param reserva
-	 */
-	public void actualizar(Reserva reserva);
-	
+		
 	/**
 	 * Metodo que permite determinar si previamente se registro una reserva
 	 * @param idReserva

@@ -12,26 +12,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+
 @Entity
+@Getter
 @Table(name = "DETALLE_RESERVA")
 public class DetalleReservaEntidad {
 	
-	public long getId() {
-		return id;
-	}
-
-	public ReservaEntidad getReserva() {
-		return reserva;
-	}
-
-	public LocalDateTime getFechaEntrega() {
-		return fechaEntrega;
-	}
-
-	public BigDecimal getCosto() {
-		return costo;
-	}
-
 	@Id
 	@GeneratedValue
 	@Column(name = "ID")

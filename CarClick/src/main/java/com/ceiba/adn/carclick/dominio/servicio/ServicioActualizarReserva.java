@@ -31,7 +31,7 @@ public class ServicioActualizarReserva {
 		validarRegistroPrevioReserva(reserva.getId());
 		validarRegistroPrevioCarro(reserva.getIdCarro());
 		validarRegistroPrevioCliente(reserva.getIdCliente());
-		repositorioReserva.actualizar(reserva);
+		repositorioReserva.crear(reserva);
 	}
 	
 	private void validarRegistroPrevioReserva(long idReserva) {

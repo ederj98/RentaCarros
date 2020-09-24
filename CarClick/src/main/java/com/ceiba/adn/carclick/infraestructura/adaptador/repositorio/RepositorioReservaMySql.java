@@ -38,12 +38,6 @@ public class RepositorioReservaMySql implements RepositorioReserva {
 	}
 
 	@Override
-	public void actualizar(Reserva reserva) {
-		ReservaEntidad entidad = MapeadorReservaEntidad.mapearAEntidad(reserva);		
-		MapeadorReservaEntidad.mapearAModelo(reservaJPA.save(entidad));
-	}
-
-	@Override
 	public boolean existe(long idReserva) {
 		return reservaJPA.existsById(idReserva);
 	}
