@@ -1,5 +1,7 @@
 package com.ceiba.adn.carclick.dominio.modelo;
 
+import com.ceiba.adn.carclick.dominio.servicio.ValidarCampos;
+
 public class Cliente {
 	
 	private long idCliente;
@@ -8,7 +10,15 @@ public class Cliente {
 	private String direccion;
 	private String email;
 	
+	private static final String EL_ID_DEL_CLIENTE_ES_REQUERIDO = "El id del cliente es requerido";
+	private static final String EL_NOMBRE_DEL_CLIENTE_ES_REQUERIDO = "El nombre del cliente es requerido";
+	private static final String EL_TELEFONO_DEL_CLIENTE_ES_REQUERIDO = "El telefono del cliente es requerido";
+		
 	public Cliente(long idCliente, String nombreCompleto, String telefono, String direccion, String email) {
+		ValidarCampos.esVacio(idCliente, EL_ID_DEL_CLIENTE_ES_REQUERIDO);
+		ValidarCampos.esVacio(nombreCompleto, EL_NOMBRE_DEL_CLIENTE_ES_REQUERIDO);
+		ValidarCampos.esVacio(telefono, EL_TELEFONO_DEL_CLIENTE_ES_REQUERIDO);
+		
 		this.idCliente = idCliente;
 		this.nombreCompleto = nombreCompleto;
 		this.telefono = telefono;

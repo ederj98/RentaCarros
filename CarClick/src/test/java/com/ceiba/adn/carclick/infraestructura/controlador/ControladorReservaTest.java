@@ -75,7 +75,7 @@ public class ControladorReservaTest {
 	public void cuandoPeticionCrearReservaClienteNoExisteEntoncesDeberiaLanzarExcepcion() throws Exception {
 		// arrange
 		ReservaDTO reservaDTO = new ReservaDTOTestDataBuilder()
-				.conIdCliente(1223222333).conFechaRecogida(LocalDateTime.now().plusHours(2)).build();
+				.conIdCliente(1223222333).conFechaRecogida(LocalDate.now().atTime(9, 0).plusDays(1)).build();
 
 		// act - assert
 		mockMvc.perform(post(URL_BASE)

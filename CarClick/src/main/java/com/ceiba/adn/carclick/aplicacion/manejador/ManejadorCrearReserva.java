@@ -21,8 +21,8 @@ public class ManejadorCrearReserva {
 	 * @return
 	 */
 	@Transactional
-	public Reserva ejecutar(ReservaDTO reservaDTO) {
+	public void ejecutar(ReservaDTO reservaDTO) {
 		Reserva reserva = MapeadorReserva.mapearAModelo(reservaDTO);
-		return this.servicioCrearReserva.ejecutar(reserva);
+		this.servicioCrearReserva.ejecutar(reserva);
 	}
 }

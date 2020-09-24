@@ -12,7 +12,27 @@ import lombok.NoArgsConstructor;
 @Getter @NoArgsConstructor
 @Table(name = "CLIENTE")
 public class ClienteEntidad {
-		
+			
+	public long getIdCliente() {
+		return idCliente;
+	}
+
+	public String getNombreCompleto() {
+		return nombreCompleto;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
 	@Id
 	@Column(name = "ID")
 	private long idCliente;

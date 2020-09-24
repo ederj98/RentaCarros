@@ -12,11 +12,6 @@ public class ServicioCrearCarro {
 	}
 	
 	public void ejecutar(Carro carro) {
-		ValidarCampos.esVacio(carro.getModelo());
-		ValidarCampos.esVacio(carro.getNumPasajeros());
-		ValidarCampos.esVacio(carro.getNumPuertas());
-		ValidarCampos.esVacio(carro.getTipoCambios());
-		ValidarCampos.esVacio(carro.getTipoCombustible());
 		this.repositorioCarro.crear(carro);
 	}
 }

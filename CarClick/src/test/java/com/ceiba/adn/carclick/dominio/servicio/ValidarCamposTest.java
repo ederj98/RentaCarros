@@ -17,7 +17,7 @@ public class ValidarCamposTest {
 
 		// act / assert
 		assertThrows(ExcepcionValidarCampo.class, 
-						() ->  ValidarCampos.esVacio(campoVacio), 
+						() ->  ValidarCampos.esVacio(campoVacio, DEBE_INGRESAR_LOS_CAMPOS_REQUERIDOS), 
 						DEBE_INGRESAR_LOS_CAMPOS_REQUERIDOS);	    
 	}
 }

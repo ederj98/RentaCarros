@@ -20,6 +20,26 @@ import lombok.Setter;
 @Table(name = "RESERVA")
 public class ReservaEntidad {
 		
+	public long getId() {
+		return id;
+	}
+
+	public ClienteEntidad getIdCliente() {
+		return idCliente;
+	}
+
+	public CarroEntidad getIdCarro() {
+		return idCarro;
+	}
+
+	public LocalDateTime getFechaRecogida() {
+		return fechaRecogida;
+	}
+
+	public DetalleReservaEntidad getDetalleReserva() {
+		return detalleReserva;
+	}
+
 	@Id
 	@GeneratedValue
 	@Column(name = "ID")
@@ -46,5 +66,9 @@ public class ReservaEntidad {
 		this.idCliente = idCliente;
 		this.idCarro = idCarro;
 		this.fechaRecogida = fechaRecogida;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 }

@@ -23,16 +23,11 @@ public class ServicioCrearReserva {
 		this.repositorioCarro = repositorioCarro;
 	}
 
-	public Reserva ejecutar(Reserva reserva) {
+	public void ejecutar(Reserva reserva) {
+		ValidarFechas.validarFechaRecogidaPosteriorAFechaActual(reserva.getFechaRecogida(), LocalDateTime.now());	
 		validarRegistroPrevioCliente(reserva.getIdCliente());
 		validarRegistroPrevioCarro(reserva.getIdCarro());
-		
-		ValidarCampos.esVacio(reserva.getFechaRecogida());
-		ValidarFechas.validarFechaRecogidaPosteriorAFechaActual(reserva.getFechaRecogida(), LocalDateTime.now());
-		ValidarFechas.validarFechaFueraHorarioServicio(reserva.getFechaRecogida());
-		ValidarCampos.esVacio(reserva.getIdCliente());
-		ValidarCampos.esVacio(reserva.getIdCarro());
-		return repositorioReserva.crear(reserva);
+		repositorioReserva.crear(reserva);
 	}
 	
 	private void validarRegistroPrevioCliente(long idCliente) {

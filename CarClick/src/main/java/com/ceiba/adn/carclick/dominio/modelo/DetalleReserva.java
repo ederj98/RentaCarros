@@ -3,14 +3,22 @@ package com.ceiba.adn.carclick.dominio.modelo;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.ceiba.adn.carclick.dominio.servicio.ValidarCampos;
+import com.ceiba.adn.carclick.dominio.servicio.ValidarFechas;
+
 public class DetalleReserva {
 	
+	private static final String EL_ID_DE_LA_RESERVA_ES_REQUERIDO = "El id de la reserva es requerido";
+		
 	private long id;
 	private long idReserva;
 	private LocalDateTime fechaEntrega;
 	private BigDecimal costo;
 	
 	public DetalleReserva(long id, long idReserva, LocalDateTime fechaEntrega, BigDecimal costo) {
+		ValidarFechas.validarFechaFueraHorarioServicio(fechaEntrega);
+		ValidarCampos.esVacio(idReserva, EL_ID_DE_LA_RESERVA_ES_REQUERIDO);
+		
 		this.id = id;
 		this.idReserva = idReserva;
 		this.fechaEntrega = fechaEntrega;

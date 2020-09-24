@@ -37,7 +37,7 @@ public class ControladorDetalleReserva {
 	@ApiOperation(value = "Crear Detalle Reserva", notes = "Servicio para Crear un Detalle Reserva")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Detalle Reserva Creado Exitosamente"),
 			@ApiResponse(code = 400, message = "Solicitud invalida") })
-	public ResponseEntity<DetalleReserva> crearDetalleCarrera(@RequestBody DetalleReservaDTO detalleReservaDTO) {
+	public ResponseEntity<DetalleReserva> crearDetalleReserva(@RequestBody DetalleReservaDTO detalleReservaDTO) {
 		return new ResponseEntity<>(this.manejadorCrearDetalleReserva.ejecutar(detalleReservaDTO), HttpStatus.CREATED);
 	}
 	

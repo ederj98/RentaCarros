@@ -44,8 +44,9 @@ public class ControladorReserva {
 	@ApiOperation(value = "Crear Reserva", notes = "Servicio para Crear una Reserva")
 	@ApiResponses(value = { @ApiResponse(code = 201, message = "Reserva Creada Exitosamente"),
 			@ApiResponse(code = 400, message = "Solicitud invalida") })
-	public ResponseEntity<Reserva> crearReserva(@RequestBody ReservaDTO reservaDTO) {
-		return new ResponseEntity<>(this.manejadorCrearReserva.ejecutar(reservaDTO), HttpStatus.CREATED);
+	public ResponseEntity<HttpStatus> crearReserva(@RequestBody ReservaDTO reservaDTO) {
+		this.manejadorCrearReserva.ejecutar(reservaDTO);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/{id}")

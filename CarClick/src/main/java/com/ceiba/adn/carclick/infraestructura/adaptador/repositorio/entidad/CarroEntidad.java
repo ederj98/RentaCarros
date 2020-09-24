@@ -7,10 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
+@Getter
 @Entity
-@Getter @NoArgsConstructor
 @Table(name = "CARRO")
 public class CarroEntidad {
 	
@@ -22,7 +21,31 @@ public class CarroEntidad {
 		this.tipoCombustible = tipoCombustible;
 		this.tipoCambios = tipoCambios;
 	}
-	
+		
+	public long getId() {
+		return id;
+	}
+
+	public String getModelo() {
+		return modelo;
+	}
+
+	public String getTipoCambios() {
+		return tipoCambios;
+	}
+
+	public int getNumPasajeros() {
+		return numPasajeros;
+	}
+
+	public int getNumPuertas() {
+		return numPuertas;
+	}
+
+	public String getTipoCombustible() {
+		return tipoCombustible;
+	}
+
 	@Id
 	@GeneratedValue
 	@Column(name = "ID")

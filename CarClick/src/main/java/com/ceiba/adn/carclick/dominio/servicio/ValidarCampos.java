@@ -7,7 +7,6 @@ import com.ceiba.adn.carclick.dominio.excepcion.ExcepcionValidarCampo;
 public final class ValidarCampos {
 
 	private static final String ESTA_CLASE_NO_DEBE_SER_INSTANCIADA = "Esta clase no debe ser instanciada";
-	private static final String DEBE_INGRESAR_LOS_CAMPOS_REQUERIDOS = "Debe ingresar los campos requeridos";
 	
 	private ValidarCampos() {
 		throw new AssertionError(ESTA_CLASE_NO_DEBE_SER_INSTANCIADA);
@@ -17,9 +16,9 @@ public final class ValidarCampos {
 	 * Metodo encargado de validar si el campo suministrado esta vacio
 	 * @param campo
 	 */
-	public static void esVacio(Object campo) {
+	public static void esVacio(Object campo, String mensaje) {
 		if (Objects.isNull(campo)) {
-			throw new ExcepcionValidarCampo(DEBE_INGRESAR_LOS_CAMPOS_REQUERIDOS);
+			throw new ExcepcionValidarCampo(mensaje);
 		}
 	}
 }

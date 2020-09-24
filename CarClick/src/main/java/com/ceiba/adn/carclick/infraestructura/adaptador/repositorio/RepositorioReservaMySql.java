@@ -21,9 +21,9 @@ public class RepositorioReservaMySql implements RepositorioReserva {
 	}
 
 	@Override
-	public Reserva crear(Reserva reserva) {
+	public void crear(Reserva reserva) {
 		ReservaEntidad entidad = MapeadorReservaEntidad.mapearAEntidad(reserva);
-		return MapeadorReservaEntidad.mapearAModelo(reservaJPA.save(entidad));
+		MapeadorReservaEntidad.mapearAModelo(reservaJPA.save(entidad));
 	}
 
 	@Override

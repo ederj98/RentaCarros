@@ -1,6 +1,14 @@
 package com.ceiba.adn.carclick.dominio.modelo;
 
+import com.ceiba.adn.carclick.dominio.servicio.ValidarCampos;
+
 public class Carro {
+
+	private static final String EL_MODELO_DEL_VEHICULO_ES_REQUERIDO = "El modelo del vehiculo es requerido";
+	private static final String EL_TIPO_DE_CAMBIOS_DEL_VEHICULO_ES_REQUERIDO = "El tipo de cambios del vehiculo es requerido";
+	private static final String EL_NUMERO_DE_PASAJEROS_QUE_PERMITE_EL_VEHICULO_ES_REQUERIDO = "El numero de pasajeros que permite el vehiculo es requerido";
+	private static final String EL_NUMERO_DE_PUERTAS_QUE_TIENE_EL_VEHICULO_ES_REQUERIDO = "El numero de puertas que tiene el vehiculo es requerido";
+	private static final String EL_TIPO_DE_COMBUSTIBLE_QUE_USA_EL_VEHICULO_ES_REQUERIDO = "El tipo de combustible que usa el vehiculo es requerido";
 	
 	private long id;
 	private String modelo;
@@ -10,6 +18,12 @@ public class Carro {
 	private String tipoCombustible;
 	
 	public Carro(long id, String modelo, String tipoCambios, int numPasajeros, int numPuertas, String tipoCombustible) {
+		ValidarCampos.esVacio(modelo, EL_MODELO_DEL_VEHICULO_ES_REQUERIDO);
+		ValidarCampos.esVacio(tipoCambios, EL_TIPO_DE_CAMBIOS_DEL_VEHICULO_ES_REQUERIDO);
+		ValidarCampos.esVacio(numPasajeros, EL_NUMERO_DE_PASAJEROS_QUE_PERMITE_EL_VEHICULO_ES_REQUERIDO);
+		ValidarCampos.esVacio(numPuertas, EL_NUMERO_DE_PUERTAS_QUE_TIENE_EL_VEHICULO_ES_REQUERIDO);
+		ValidarCampos.esVacio(tipoCombustible, EL_TIPO_DE_COMBUSTIBLE_QUE_USA_EL_VEHICULO_ES_REQUERIDO);
+		
 		this.id = id;
 		this.modelo = modelo;
 		this.tipoCambios = tipoCambios;

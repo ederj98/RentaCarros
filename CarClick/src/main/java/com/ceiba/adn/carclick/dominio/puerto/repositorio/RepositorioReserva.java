@@ -12,7 +12,7 @@ public interface RepositorioReserva {
 	 * @param reserva
 	 * @return
 	 */
-	public Reserva crear(Reserva reserva);
+	public void crear(Reserva reserva);
 	
 	/**
 	 * Metodo encargado de la actualizar una Reserva

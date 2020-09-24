@@ -15,9 +15,6 @@ public class ServicioCrearCliente {
 	
 	public void ejecutar(Cliente cliente) {
 		validarRegistroPrevio(cliente.getIdCliente());
-		ValidarCampos.esVacio(cliente.getIdCliente());
-		ValidarCampos.esVacio(cliente.getNombreCompleto());
-		ValidarCampos.esVacio(cliente.getEmail());
 		this.repositorioCliente.crear(cliente);
 	}
 
