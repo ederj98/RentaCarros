@@ -6,33 +6,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Entity
-@Getter @NoArgsConstructor
+@Getter
 @Table(name = "CLIENTE")
 public class ClienteEntidad {
-			
-	public long getIdCliente() {
-		return idCliente;
-	}
-
-	public String getNombreCompleto() {
-		return nombreCompleto;
-	}
-
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public String getDireccion() {
-		return direccion;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
+	
 	@Id
 	@Column(name = "ID")
 	private long idCliente;

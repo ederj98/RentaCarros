@@ -8,8 +8,8 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 
-@Getter
 @Entity
+@Getter
 @Table(name = "CARRO")
 public class CarroEntidad {
 	
@@ -22,29 +22,6 @@ public class CarroEntidad {
 		this.tipoCambios = tipoCambios;
 	}
 		
-	public long getId() {
-		return id;
-	}
-
-	public String getModelo() {
-		return modelo;
-	}
-
-	public String getTipoCambios() {
-		return tipoCambios;
-	}
-
-	public int getNumPasajeros() {
-		return numPasajeros;
-	}
-
-	public int getNumPuertas() {
-		return numPuertas;
-	}
-
-	public String getTipoCombustible() {
-		return tipoCombustible;
-	}
 
 	@Id
 	@GeneratedValue
