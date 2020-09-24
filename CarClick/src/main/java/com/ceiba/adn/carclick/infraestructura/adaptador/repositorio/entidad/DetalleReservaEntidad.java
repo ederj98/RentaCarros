@@ -12,12 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
-
 @Entity
-@Getter @NoArgsConstructor
 @Table(name = "DETALLE_RESERVA")
 public class DetalleReservaEntidad {
 	
