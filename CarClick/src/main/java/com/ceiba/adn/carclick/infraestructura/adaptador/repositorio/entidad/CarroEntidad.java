@@ -21,7 +21,6 @@ public class CarroEntidad {
 		this.tipoCombustible = tipoCombustible;
 		this.tipoCambios = tipoCambios;
 	}
-		
 
 	@Id
 	@GeneratedValue

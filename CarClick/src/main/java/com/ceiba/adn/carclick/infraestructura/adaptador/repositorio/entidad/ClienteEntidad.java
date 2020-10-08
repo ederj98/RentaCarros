@@ -11,7 +11,7 @@ import lombok.Getter;
 @Getter
 @Table(name = "CLIENTE")
 public class ClienteEntidad {
-	
+
 	@Id
 	@Column(name = "ID")
 	private long idCliente;

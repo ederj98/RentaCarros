@@ -18,7 +18,7 @@ import lombok.Getter;
 @Getter
 @Table(name = "DETALLE_RESERVA")
 public class DetalleReservaEntidad {
-	
+
 	@Id
 	@GeneratedValue
 	@Column(name = "ID")
