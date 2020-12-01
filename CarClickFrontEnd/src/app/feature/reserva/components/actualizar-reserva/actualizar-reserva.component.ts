@@ -33,12 +33,13 @@ export class ActualizarReservaComponent implements OnInit {
   }
 
   consultar() {
+    
     this.reservaServices.consultarPorId(this.id).subscribe(
       response => {
       this.reservaForm.get('id').setValue(this.id);
       this.reservaForm.get('idCliente').setValue(response.idCliente);
       this.reservaForm.get('idCarro').setValue(response.idCarro);
-      this.reservaForm.get('fechaRecogida').setValue(formatDate(new Date(response.fechaRecogida), 'yyyy-MM-dd HH:mm:ss', 'en-US'));
+      this.reservaForm.get('fechaRecogida').setValue(formatDate(new Date(response.fechaRecogida), "yyyy-MM-dd'T'HH:mm", 'en-US'));
       },
       error => {
         console.log(`Error ${error.status}: cliente no encontrado`);

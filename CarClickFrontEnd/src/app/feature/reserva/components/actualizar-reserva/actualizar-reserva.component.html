@@ -10,7 +10,7 @@
   </div>
   <div class="form-group">
     <label for="fechaRecogida">Fecha recogida</label>
-    <input validar type="text" class="form-control" id="fechaRecogida" formControlName="fechaRecogida" placeholder="yyyy-MM-dd HH:mm:ss">
+    <input validar type="datetime-local" class="form-control" id="fechaRecogida" formControlName="fechaRecogida" placeholder="yyyy-MM-dd HH:mm:ss">
   </div>
   <button type="submit" [disabled]="reservaForm.invalid" class="btn btn-primary">Actualizar reserva</button>
 </form>
