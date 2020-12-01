@@ -6,7 +6,9 @@
     "app-base": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:component": {  "style": "css"}
+        "@schematics/angular:component": {
+          "style": "css"
+        }
       },
       "root": "",
       "sourceRoot": "src",
@@ -25,9 +27,9 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [ 
+            "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"          
+              "src/styles.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -61,7 +63,6 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "6kb"
                 }
-
               ]
             }
           }
@@ -71,7 +72,6 @@
           "options": {
             "browserTarget": "app-base:build",
             "proxyConfig": "proxy.conf.json"
-
           },
           "configurations": {
             "production": {
@@ -97,7 +97,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css" 
+              "src/styles.css"
             ],
             "scripts": []
           }
@@ -128,6 +128,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "app-base"
+    }
+  },
+  "defaultProject": "app-base",
+  "cli": {
+    "analytics": "fd8746cf-3db1-4f9a-b37f-f9ca015fba30"
+  }
 }

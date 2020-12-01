@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs';
+import { formatDate} from '@angular/common';
 
 import { ReservaService } from '../../shared/service/reserva.service';
 import { CarroService } from '../../../carro/shared/service/carro.service';
@@ -29,6 +30,7 @@ export class CrearReservaComponent implements OnInit {
   }
 
   crear() {
+    this.reservaForm.value.fechaRecogida = formatDate(new Date(this.reservaForm.value.fechaRecogida), 'yyyy-MM-dd HH:mm:ss', 'en-US');
     this.reservaServices.guardar(this.reservaForm.value).subscribe(
       response => {
       console.log(response);
